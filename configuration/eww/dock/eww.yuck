@@ -1,0 +1,49 @@
+(defwindow dockapps
+    :windowtype "dock"
+    :geometry (geometry
+                :x "-23%"
+                :y "-1%"
+                :width "33%"
+                :height "6%"
+                :anchor "bottom center")
+    (docklayout))
+
+
+(defwindow dockmain
+    :windowtype "dock"
+    :geometry (geometry
+                :x "0%"
+                :y "-1%"
+                :width "11%"
+                :height "6%"
+                :anchor "bottom center")
+    (docklayout))
+
+
+(defwindow dockdynamic
+    :windowtype "dock"
+    :geometry (geometry
+                :x "15%"
+                :y "-1%"
+                :width "17%"
+                :height "6%"
+                :anchor "bottom center")
+    (docklayout))
+
+
+(defwindow dockstatus
+    :windowtype "dock"
+    :geometry (geometry
+                :x "32%"
+                :y "-1%"
+                :width "15%"
+                :height "6%"
+                :anchor "bottom center")
+    (docklayout))
+
+
+(defpoll time :interval "1s"
+        'date +%H:%M:%S ')
+
+(defwidget docklayout []
+    (label :text "${time}"))
