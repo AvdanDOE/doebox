@@ -66,4 +66,4 @@
             :spacing -15
             (label :class "dynamic_time" :text "${time}")
             (label :class "dynamic_date" :text "${curdate}"))
-        (label :text "weather (eventually)")))
+        (label :text "AvdanDOE Internal 󰌾")))
