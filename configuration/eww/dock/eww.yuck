@@ -17,7 +17,7 @@
                 :width "11%"
                 :height "6%"
                 :anchor "bottom center")
-    (docklayout))
+    (dockmain_layout))
 
 
 (defwindow dockdynamic
@@ -47,3 +47,6 @@
 
 (defwidget docklayout []
     (label :text "${time}"))
+
+(defwidget dockmain_layout []
+    (label :text "󰍉    󰊭    󰄷")) 
