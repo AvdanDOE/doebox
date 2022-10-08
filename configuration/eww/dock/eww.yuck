@@ -6,7 +6,7 @@
                 :width "33%"
                 :height "6%"
                 :anchor "bottom center")
-    (docklayout))
+    (dockapps_layout))
 
 
 (defwindow dockmain
@@ -39,7 +39,7 @@
                 :width "15%"
                 :height "6%"
                 :anchor "bottom center")
-    (docklayout))
+    (dockstatus_layout))
 
 
 (defpoll time :interval "1s"
@@ -47,6 +47,9 @@
 
 (defpoll curdate :interval "1s"
         'date "+%A, %B %d"')
+
+(defpoll applist :interval "1s"
+        'sh ~/testscripts/appslist.sh')
 
 (defwidget docklayout []
     (label :text "${time}"))
@@ -67,3 +70,22 @@
             (label :class "dynamic_time" :text "${time}")
             (label :class "dynamic_date" :text "${curdate}"))
         (label :text "AvdanDOE Internal 󰌾")))
+
+(defwidget dockstatus_layout []
+            (box
+                :orientation "horizontal"
+                (label :text "")
+                (button :onclick "echo something wifi&&disown" "󱚾")
+                (button :onclick "blueberry&&disown" "󰂯")
+                (button :onclick "echo something battery&&disown" "󱟨")
+                (button :onclick "xfce4-settings-manager&&disown" "󰒓")
+
+
+        (label :style 'color: #222;' :text "|")
+        (button :onclick "echo later" "󰮫")
+        (label :text "")
+    )
+)
+
+(defwidget dockapps_layout []
+    (label :text "AvdanDOE Alpha Testing Phase: Do not redistribute.   󰌾   󰢏   󰈙   󰀫"))
