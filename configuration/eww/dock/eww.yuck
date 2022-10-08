@@ -52,7 +52,11 @@
     (label :text "${time}"))
 
 (defwidget dockmain_layout []
-    (label :text "󰍉    󰊭    󰄷")) 
+    (box
+        :orientation "horizontal"
+    (button :onclick "xfce4-terminal --working-directory=~&&disown" "󰆍")
+    (button :onclick "rofi -show drun&&disown" "󰊱")
+    (button :onclick "google-chrome-stable&&disown" "󰊯")))
 
 (defwidget dockdynamic_layout []
     (box 
