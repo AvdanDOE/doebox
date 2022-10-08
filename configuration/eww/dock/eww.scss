@@ -1,4 +1,4 @@
-* { all: unset; }
+* { all: unset; font-family: HarmonyOS Sans;}
 
 .dockapps {
     background-color: #000;
@@ -23,4 +23,8 @@
     background-color: #000;
     border-radius: 8px;
     opacity: 0.8;
+}
+
+.dynamic_time{
+    font-size: 18;
 }

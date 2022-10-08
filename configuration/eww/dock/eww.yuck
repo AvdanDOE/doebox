@@ -28,7 +28,7 @@
                 :width "17%"
                 :height "6%"
                 :anchor "bottom center")
-    (docklayout))
+    (dockdynamic_layout))
 
 
 (defwindow dockstatus
@@ -43,10 +43,23 @@
 
 
 (defpoll time :interval "1s"
-        'date +%H:%M:%S ')
+        'date +%H:%M ')
+
+(defpoll curdate :interval "1s"
+        'date "+%A, %B %d"')
 
 (defwidget docklayout []
     (label :text "${time}"))
 
 (defwidget dockmain_layout []
     (label :text "󰍉    󰊭    󰄷")) 
+
+(defwidget dockdynamic_layout []
+    (box 
+        :orientation "horizontal"
+        (box 
+            :orientation "vertical"
+            :spacing -15
+            (label :class "dynamic_time" :text "${time}")
+            (label :class "dynamic_date" :text "${curdate}"))
+        (label :text "weather (eventually)")))
