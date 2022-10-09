@@ -23,7 +23,7 @@
 ;; list windows
 
 (defwindow dockapps
-    :windowtype "desktop"
+    :windowtype "dock"
     :geometry (geometry
                 :x "-23%"
                 :y "-1%"
