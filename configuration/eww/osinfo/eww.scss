@@ -1,0 +1,13 @@
+// doebox/osinfo styling
+// based on eww
+// for licensing and info refer to avdandoe/doebox
+
+// unset gtk design, set font
+* { all: unset; font-family: HarmonyOS Sans; }
+
+// generic dock window design
+.genericBox {
+    background-color: #000;
+    border-radius: 8px;
+    opacity: 0.8;
+}

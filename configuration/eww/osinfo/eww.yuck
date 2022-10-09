@@ -1,0 +1,9 @@
+(defwindow dockapps
+    :windowtype "window"
+    :geometry (geometry
+                :x "-23%"
+                :y "-1%"
+                :width "33%"
+                :height "6%"
+                :anchor "bottom center")
+    (dockapps_layout))
