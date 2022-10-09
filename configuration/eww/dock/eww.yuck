@@ -129,7 +129,7 @@
 (defwidget dockapps_layout []
     (box
     :class "genericBox"
-        (label :text "AvdanDOE Alpha Testing Phase: Do not redistribute.   󰌾   󰢏   󰈙   󰀫")
+        (label :markup "AvdanOS Alpha: Running <span font_family='monospace'> AvdanDOE 0.2 Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 ")
     )
 )
 
