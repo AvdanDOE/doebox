@@ -1,3 +1,27 @@
+;; doebox/dock
+;; based on eww
+;; for licensing and info refer to avdandoe/doebox
+
+;; list pollers
+
+(defpoll time :interval "1s"
+        'date +%H:%M ')
+
+(defpoll curdate :interval "1s"
+        'date "+%A, %B %d"')
+
+(defpoll applist :interval "1s"
+        'sh w')
+
+(defpoll coverPath :interval "1s"
+        'sh ./scripts/grabalbum.sh')
+
+;; end pollers
+
+
+
+;; list windows
+
 (defwindow dockapps
     :windowtype "dock"
     :geometry (geometry
@@ -41,18 +65,11 @@
                 :anchor "bottom center")
     (dockstatus_layout))
 
+;; end windows
 
-(defpoll time :interval "1s"
-        'date +%H:%M ')
 
-(defpoll curdate :interval "1s"
-        'date "+%A, %B %d"')
 
-(defpoll applist :interval "1s"
-        'sh w')
-
-(defpoll coverPath :interval "1s"
-        'sh ./scripts/grabalbum.sh')
+;; list widgets
 
 (defwidget docklayout []
     (label :text "${time}"))
@@ -66,10 +83,10 @@
     (button :onclick "google-chrome-stable&&disown" "󰊯")))
 
 (defwidget dockdynamic_layout []
-    (box 
+    (box :visible true
         :orientation "horizontal"
         :class "genericBox"
-        (box 
+        (box
             :orientation "vertical"
             :spacing -15
             (label :class "dynamic_time" :text "${time}")
@@ -114,3 +131,5 @@
         (label :text "AvdanDOE Alpha Testing Phase: Do not redistribute.   󰌾   󰢏   󰈙   󰀫")
     )
 )
+
+;; end widgets
