@@ -14,9 +14,7 @@
         :orientation "vertical"
         (box
             :orientation "horizontal"
-            :spacing -250
-            (image :path "../globalassets/avlogo.svg" :image-width 80)
-            (label :text "AvdanOS         " :style 'font-size: 36')
+            (image :path "../globalassets/avdanalpha.png" :image-width 500)
 
         )
         (box
