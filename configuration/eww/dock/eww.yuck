@@ -23,7 +23,7 @@
 ;; list windows
 
 (defwindow dockapps
-    :windowtype "dock"
+    :windowtype "desktop"
     :geometry (geometry
                 :x "-23%"
                 :y "-1%"
@@ -41,6 +41,7 @@
                 :width "11%"
                 :height "6%"
                 :anchor "bottom center")
+                :reserve (struts :distance "8%" :side "bottom")
     (dockmain_layout))
 
 

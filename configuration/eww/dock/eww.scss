@@ -1,27 +1,39 @@
-* { all: unset; font-family: HarmonyOS Sans;}
+// doebox/dock styling
+// based on eww
+// for licensing and info refer to avdandoe/doebox
 
+// unset gtk design, set font
+* { all: unset; font-family: HarmonyOS Sans; }
+
+// generic dock window design
 .genericBox {
     background-color: #000;
     border-radius: 8px;
     opacity: 0.8;
 }
 
+// generic icon design
 .genericIcon {
     font-size: 30px;
 }
 
+// generic text design
 .genericText {
     opacity: 1.0;
 }
 
+// main dock additions
 .dockmain {
     font-size: 30px;
 }
 
+// status dock additions
 .dockstatus {
     font-size: 20px;
 }
 
+// time font additions
 .dynamic_time{
     font-size: 18px;
+    font-weight: normal;
 }
