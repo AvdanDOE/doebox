@@ -1,31 +1,27 @@
 * { all: unset; font-family: HarmonyOS Sans;}
 
-.dockapps {
+.genericBox {
     background-color: #000;
     border-radius: 8px;
     opacity: 0.8;
+}
+
+.genericIcon {
+    font-size: 30px;
+}
+
+.genericText {
+    opacity: 1.0;
 }
 
 .dockmain {
-    background-color: #000;
-    border-radius: 8px;
-    opacity: 0.8;
-    font-size: 30;
-}
-
-.dockdynamic {
-    background-color: #000;
-    border-radius: 8px;
-    opacity: 0.8;
+    font-size: 30px;
 }
 
 .dockstatus {
-    background-color: #000;
-    border-radius: 8px;
-    opacity: 0.8;
-    font-size: 20;
+    font-size: 20px;
 }
 
 .dynamic_time{
-    font-size: 18;
+    font-size: 18px;
 }
