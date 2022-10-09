@@ -1,9 +1,29 @@
-(defwindow dockapps
-    :windowtype "window"
+(defwindow aboutav
+    :windowtype "normal"
     :geometry (geometry
-                :x "-23%"
-                :y "-1%"
-                :width "33%"
-                :height "6%"
-                :anchor "bottom center")
-    (dockapps_layout))
+                :x "50%"
+                :y "50%"
+                :width "30%"
+                :height "30%"
+                :anchor "center")
+    (aboutav_layout))
+
+(defwidget aboutav_layout []
+    (box
+        :class "genericBox"
+        :orientation "vertical"
+        (box
+            :orientation "horizontal"
+            :spacing -250
+            (image :path "../globalassets/avlogo.svg" :image-width 80)
+            (label :text "AvdanOS         " :style 'font-size: 36')
+
+        )
+        (box
+            :orientation "vertical"
+            :spacing -100
+            (label :text "Running AvdanDOE 0.2 Public on DOEBox V1 Lune (v1lune)")
+            (label :text "https://github.com/avdandoe")
+        )
+    )
+)
