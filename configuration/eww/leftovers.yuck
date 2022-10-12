@@ -1,0 +1,15 @@
+;; media player
+
+(box
+    :orientation "horizontal"
+    :spacing -30
+    (box
+        (image :path "${coverPath}" :image-width 45)
+    )
+    (box
+        :orientation "horizontal"
+        :spacing -20
+        (button :class "genericIcon" :onclick "playerctl play-pause" "󰏤")
+        (button :class "genericIcon" :onclick "playerctl next" "󰒭")
+    )
+)
