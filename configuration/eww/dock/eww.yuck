@@ -5,16 +5,20 @@
 ;; list pollers
 
 (defpoll time :interval "1s"
-        'date +%H:%M ')
+    'date +%H:%M '
+)
 
 (defpoll curdate :interval "1s"
-        'date "+%A, %B %d"')
+    'date "+%A, %B %d"'
+)
 
 (defpoll applist :interval "1s"
-        'sh w')
+    'sh w'
+)
 
 (defpoll coverPath :interval "1s"
-        'sh ./scripts/grabalbum.sh')
+    'sh ./scripts/grabalbum.sh'
+)
 
 ;; end pollers
 
@@ -22,7 +26,7 @@
 
 ;; list windows
 
-(defwindow dockapps
+(defwindow dockdynamic
     :windowtype "dock"
     :geometry (geometry
                 :x "-23%"
@@ -31,7 +35,8 @@
                 :height "6%"
                 :anchor "bottom center")
                 :stacking "bg"
-    (dockapps_layout))
+    (dockdynamic_layout)
+)
 
 
 (defwindow dockmain
@@ -43,10 +48,11 @@
                 :height "6%"
                 :anchor "bottom center")
                 :reserve (struts :distance "8%" :side "bottom")
-    (dockmain_layout))
+    (dockmain_layout)
+)
 
 
-(defwindow dockdynamic
+(defwindow dockstatic
     :windowtype "dock"
     :geometry (geometry
                 :x "15%"
@@ -54,7 +60,8 @@
                 :width "17%"
                 :height "6%"
                 :anchor "bottom center")
-    (dockdynamic_layout))
+    (dockstatic_layout)
+)
 
 
 (defwindow dockstatus
@@ -65,73 +72,151 @@
                 :width "15%"
                 :height "6%"
                 :anchor "bottom center")
-    (dockstatus_layout))
+    (dockstatus_layout)
+)
 
 ;; end windows
 
 
 
-;; list widgets
-
-(defwidget docklayout []
-    (label :text "${time}"))
+;; def layouts
 
 (defwidget dockmain_layout []
     (box
         :orientation "horizontal"
-        :class "genericBox"
-    (button :onclick "xfce4-terminal --working-directory=~&&disown" "󰆍")
-    (button :onclick "rofi -show drun&&disown" "󰊱")
-    (button :onclick "google-chrome-stable&&disown" "󰊯")))
+        :class "boxGeneric"
+            (callAppLeft)
+            (callDashboard)
+            (callAppRight)
+    )
+)
 
-(defwidget dockdynamic_layout []
-    (box :visible true
+(defwidget dockstatic_layout []
+    (box
         :orientation "horizontal"
-        :class "genericBox"
-        (box
-            :orientation "vertical"
-            :spacing -15
-            (label :class "dynamic_time" :text "${time}")
-            (label :class "dynamic_date" :text "${curdate}")
-        )
-        (box
-            :orientation "horizontal"
-            :spacing -30
-            (box
-                (image :path "${coverPath}" :image-width 45)
-            )
-            (box
-                :orientation "horizontal"
-                :spacing -20
-                (button :class "genericIcon" :onclick "playerctl play-pause" "󰏤")
-                (button :class "genericIcon" :onclick "playerctl next" "󰒭")
-            )
-        )
+        :class "boxGeneric"
+            (timeDate)
     )
 )
 
 (defwidget dockstatus_layout []
-            (box
-                :orientation "horizontal"
-                :class "genericBox"
-                (label :text "")
-                (button :onclick "echo something wifi&&disown" "󱚾")
-                (button :onclick "blueberry&&disown" "󰂯")
-                (button :onclick "echo something battery&&disown" "󱟨")
-                (button :onclick "xfce4-settings-manager&&disown" "󰒓")
-
-
-        (label :style 'color: #222;' :text "|")
-        (button :onclick "echo later" "󰮫")
-        (label :text "")
-    )
-)
-
-(defwidget dockapps_layout []
     (box
-    :class "genericBox"
-        ;;(label :markup "AvdanOS Alpha: Running <span font_family='monospace'> AvdanDOE 0.2 Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 ")
+        :orientation "horizontal"
+        :class "boxGeneric"
+        :spacing -100
+            (iconWifi)
+            (iconBluetooth)
+            (iconVolume)
+            (iconSettings)
+            (iconExpand)
     )
 )
 
-;; end widgets
+(defwidget dockdynamic_layout []
+    (box
+        :class "boxGeneric"
+            (label :markup "AvdanOS Alpha: Running <span font_family='monospace'> AvdanDOE 0.2 Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 ")
+    )
+)
+
+;; end layouts
+
+
+
+;; def microwidgets
+
+;; ;; main dock
+
+(defwidget callAppRight []
+    (box
+        :class "appBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "appIconGeneric" :onclick "google-chrome-stable&&disown" "󰊯")
+    )
+)
+
+(defwidget callAppLeft []
+    (box
+        :class "appBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "appIconGeneric" :onclick "xfce4-terminal --working-directory=~&&disown" "󰆍")
+    )
+)
+
+(defwidget callDashboard []
+    (box
+        :class "appBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "appIconGeneric" :onclick "rofi -show drun&&disown" "󰊱")
+    )
+)
+
+;; ;; end main dock
+
+;; ;; dynamic dock
+
+(defwidget timeDate []
+    (box
+        :class "textBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+        :orientation "vertical"
+        :spacing -15
+            (label :class "textNormalGeneric" :text "${time}")
+            (label :class "textSubnormalGeneric" :text "${curdate}")
+    )
+)
+
+;; ;; end dynamic dock
+
+;; ;; status dock
+
+(defwidget iconWifi []
+    (box
+        :class "iconBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "iconSmallGeneric" :onclick "echo something wifi&&disown" "󱚾")
+    )
+)
+
+(defwidget iconBluetooth []
+    (box
+        :class "iconBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "iconSmallGeneric" :onclick "blueberry&&disown" "󰂯")
+    )
+)
+
+(defwidget iconVolume []
+    (box
+        :class "iconBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "iconSmallGeneric" :onclick "echo something battery&&disown" "󱟨")
+    )
+)
+
+(defwidget iconSettings []
+    (box
+        :class "iconBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "iconSmallGeneric" :onclick "xfce4-settings-manager&&disown" "󰒓")
+    )
+)
+
+(defwidget iconExpand []
+    (box
+        :class "iconBoxGeneric"
+        :vexpand "false"
+        :hexpand "false"
+            (button :class "iconSmallGeneric" :onclick "echo later" "󰮫")
+    )
+)
+
+;; end microwidgets
