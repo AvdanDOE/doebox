@@ -13,3 +13,7 @@
         (button :class "genericIcon" :onclick "playerctl next" "󰒭")
     )
 )
+
+(defpoll coverPath :interval "1s"
+    'sh ./scripts/grabalbum.sh'
+)
