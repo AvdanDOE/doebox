@@ -18,7 +18,7 @@
     'date "+%A, %B %d"'
 )
 
-(defpoll pollerVolume :interval "2s"
+(defpoll pollerVolume :interval "1s"
     'sh ./scripts/grabvolume.sh'
 )
 
