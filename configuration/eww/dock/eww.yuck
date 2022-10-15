@@ -12,14 +12,6 @@
     'date "+%A, %B %d"'
 )
 
-(defpoll applist :interval "1s"
-    'sh w'
-)
-
-(defpoll coverPath :interval "1s"
-    'sh ./scripts/grabalbum.sh'
-)
-
 ;; end pollers
 
 
