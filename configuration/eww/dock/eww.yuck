@@ -2,14 +2,32 @@
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
+;; define variables
+
+(defvar volumePercentage 0)
+
+(defvar ewwCmd "eww -c ~/Documents/VSCODEProjects/doebox/configuration/eww/dock")
+
 ;; list pollers
 
-(defpoll time :interval "1s"
+(defpoll pollerTime :interval "1s"
     'date +%H:%M '
 )
 
-(defpoll curdate :interval "1s"
+(defpoll pollerDate :interval "1s"
     'date "+%A, %B %d"'
+)
+
+(defpoll pollerVolume :interval "2s"
+    'sh ./scripts/grabvolume.sh'
+)
+
+(defpoll pollerBluetooth :interval "3s"
+    'sh ./scripts/grabbluetooth.sh'
+)
+
+(defpoll pollerWifi :interval "3s"
+    'sh ./scripts/grabwifi.sh'
 )
 
 ;; end pollers
@@ -95,19 +113,22 @@
     (box
         :orientation "horizontal"
         :class "boxGeneric"
-        :spacing -100
+            (label :text "")
             (iconWifi)
             (iconBluetooth)
             (iconVolume)
             (iconSettings)
             (iconExpand)
+            (label :text "")
     )
 )
 
 (defwidget dockdynamic_layout []
     (box
         :class "boxGeneric"
-            (label :markup "AvdanOS Alpha: Running <span font_family='monospace'> AvdanDOE 0.2 Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 ")
+            (label 
+                :markup "AvdanOS Alpha: Running <span font_family='monospace'> AvdanDOE 0.2 Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
+            )
     )
 )
 
@@ -124,7 +145,11 @@
         :class "appBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "appIconGeneric" :onclick "google-chrome-stable&&disown" "󰊯")
+            (button 
+                :class "appIconGeneric"
+                :onclick "google-chrome-stable&&disown"
+                "󰊯"
+            )
     )
 )
 
@@ -133,7 +158,11 @@
         :class "appBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "appIconGeneric" :onclick "xfce4-terminal --working-directory=~&&disown" "󰆍")
+            (button
+                :class "appIconGeneric"
+                :onclick "xfce4-terminal --working-directory=~&&disown"
+                "󰆍"
+            )
     )
 )
 
@@ -142,7 +171,11 @@
         :class "appBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "appIconGeneric" :onclick "rofi -show drun&&disown" "󰊱")
+            (button
+                :class "appIconGeneric"
+                :onclick "rofi -show drun&&disown"
+                "󰊱"
+            )
     )
 )
 
@@ -157,8 +190,14 @@
         :hexpand "false"
         :orientation "vertical"
         :spacing -15
-            (label :class "textNormalGeneric" :text "${time}")
-            (label :class "textSubnormalGeneric" :text "${curdate}")
+            (label 
+                :class "textNormalGeneric"
+                :text "${pollerTime}"
+            )
+            (label
+                :class "textSubnormalGeneric"
+                :text "${pollerDate}"
+            )
     )
 )
 
@@ -171,7 +210,12 @@
         :class "iconBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "iconSmallGeneric" :onclick "echo something wifi&&disown" "󱚾")
+            (button
+                :tooltip "Wi-Fi" 
+                :class "iconSmallGeneric" 
+                :onclick "cutefish-settings -m wifi&&disown" 
+                "${pollerWifi}"
+            )
     )
 )
 
@@ -180,16 +224,30 @@
         :class "iconBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "iconSmallGeneric" :onclick "blueberry&&disown" "󰂯")
+            (button 
+                :tooltip "Bluetooth" 
+                :class "iconSmallGeneric" 
+                :onclick "cutefish-settings -m bluetooth&&disown" 
+                "${pollerBluetooth}"
+            )
     )
 )
 
 (defwidget iconVolume []
-    (box
-        :class "iconBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
-            (button :class "iconSmallGeneric" :onclick "echo something battery&&disown" "󱟨")
+    (eventbox
+        :onhover "${ewwCmd} update volumePercentage=$(pamixer --get-volume)"
+        :onscroll "sh ./scripts/setvolume.sh {}"
+            (box
+                :class "iconBoxGeneric"
+                :vexpand "false"
+                :hexpand "false"
+                    (button 
+                        :tooltip "Volume: ${volumePercentage}%" 
+                        :class "iconSmallGeneric" 
+                        :onclick "cutefish-settings -m sound&&disown" 
+                        "${pollerVolume}"
+                    )
+            )
     )
 )
 
@@ -198,7 +256,12 @@
         :class "iconBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "iconSmallGeneric" :onclick "xfce4-settings-manager&&disown" "󰒓")
+            (button 
+                :tooltip "Settings" 
+                :class "iconSmallGeneric" 
+                :onclick "cutefish-settings&&disown" 
+                "󰒓"
+            )
     )
 )
 
@@ -207,7 +270,12 @@
         :class "iconBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button :class "iconSmallGeneric" :onclick "echo later" "󰮫")
+            (button 
+                :tooltip "iconExpand:iconBoxGeneric" 
+                :class "iconSmallGeneric" 
+                :onclick "echo later" 
+                "󰮫"
+            )
     )
 )
 
