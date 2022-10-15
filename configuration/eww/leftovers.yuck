@@ -17,3 +17,21 @@
 (defpoll coverPath :interval "1s"
     'sh ./scripts/grabalbum.sh'
 )
+
+(defwidget iconVolume []
+    (eventbox
+        :onhover "${ewwCmd} update volumePercentage=$(pamixer --get-volume)"
+        :onscroll "sh ./scripts/setvolume.sh {} && ${ewwCmd} update pollerVolume=$(sh ./scripts/grabvolume.sh)"
+            (box
+                :class "iconBoxGeneric"
+                :vexpand "false"
+                :hexpand "false"
+                    (button 
+                        :tooltip "Volume: ${volumePercentage}%" 
+                        :class "iconSmallGeneric" 
+                        :onclick "cutefish-settings -m sound&&disown" 
+                        "${pollerVolume}"
+                    )
+            )
+    )
+)
