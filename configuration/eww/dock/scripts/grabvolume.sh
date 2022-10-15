@@ -12,5 +12,6 @@ map() {
     echo $(( (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min ))
 }
 
-map `pamixer --get-volume` 1 100 1 3
+LEVEL=`map $(pamixer --get-volume) 1 100 1 3`
 
+echo ${ICONSET[$LEVEL]}
