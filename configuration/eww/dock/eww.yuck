@@ -171,11 +171,14 @@
         :class "appBoxGeneric"
         :vexpand "false"
         :hexpand "false"
-            (button
-                :class "appIconGeneric"
+            (eventbox
                 :onclick "rofi -show drun&&disown"
-                "󰊱"
+                    (image 
+                        :class "appIconGeneric"
+                        :path "../globalassets/avlogo.svg" 
+                        :image-width 32)
             )
+
     )
 )
 
