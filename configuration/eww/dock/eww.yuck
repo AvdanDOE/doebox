@@ -377,32 +377,4 @@
     )
 )
 
-(defwidget volumeProgress []
-    (box 
-        :class "longBoxRollup"
-        :vexpand false
-        :hexpand false
-        :style "margin: 4 8 4 8;"
-            (progress
-                :class "progressGeneric"
-                :value 50
-                :orientation "h"
-            )
-    )
-)
-
-(defwidget brightnessProgress []
-    (box 
-        :class "longBoxRollup"
-        :vexpand false
-        :hexpand false
-        :style "margin: 4 8 8 8;"
-            (progress
-                :class "progressGeneric"
-                :value 50
-                :orientation "h"
-            )
-    )
-)
-
 ;; end microwidgets
