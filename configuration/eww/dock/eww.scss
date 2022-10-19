@@ -2,18 +2,26 @@
 // based on eww
 // for licensing and info refer to avdandoe/doebox
 
+$bgc: #000;
+$fgc: #fff;
+
 // unset gtk design, set font
 * { all: unset; font-family: HarmonyOS Sans; }
 
 // generic dock window design
 .boxGeneric {
-    background-color: #000;
+    background-color: $bgc;
     border-radius: 8px;
     opacity: 0.8;
+    color: $fgc;
 }
 
 .appIconGeneric {
     font-size: 32px;
+}
+
+.appImageGeneric {
+    //fill: $fgc;
 }
 
 .textNormalGeneric{
@@ -29,3 +37,25 @@
 .iconSmallGeneric{
     font-size: 20px;
 }
+
+.iconGeneric{
+    font-size: 24px;
+}
+
+.buttonBoxRollup{
+    background-color: $fgc;
+    border-radius: 8px;
+    //margin: 8 8 8 8;
+    color: $bgc;
+}
+
+.progressGeneric trough{
+    border-radius: 8px;
+}
+
+progressbar trough{
+    min-width: 32px;
+    min-height: 24px;
+    background-color: $fgc;
+}
+

@@ -44,7 +44,6 @@
                 :width "33%"
                 :height "6%"
                 :anchor "bottom center")
-                :stacking "bg"
     (dockdynamic_layout)
 )
 
@@ -85,6 +84,17 @@
     (dockstatus_layout)
 )
 
+(defwindow dockstatus_rollup
+    :windowtype "dock"
+    :geometry (geometry
+                :x "32%"
+                :y "-8%"
+                :width "15%"
+                :height "18%"
+                :anchor "bottom center")
+    (dockstatus_rollup_layout)
+)
+
 ;; end windows
 
 
@@ -123,11 +133,31 @@
     )
 )
 
+(defwidget dockstatus_rollup_layout []
+    (box
+        :orientation "vertical"
+        :class "boxGeneric"
+            (box
+                :orientation "horizontal"
+                :class "layoutBoxGeneric"
+                    (buttonWifi)
+                    (buttonBluetooth)
+            )
+            (box
+                :orientation "horizontal"
+                :class "layoutBoxGeneric"
+                    (buttonDND)
+                    (buttonThemeToggle)
+            )
+            (label :markup "Hey there <b>kerichuu-avdanosTPkey</b>.")
+    )
+)
+
 (defwidget dockdynamic_layout []
     (box
         :class "boxGeneric"
             (label 
-                :markup "AvdanOS Alpha: Running <span font_family='monospace'> AvdanDOE 0.2 Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
+                :markup "<b>AvdanOS</b> Alpha: Running <span font_family='monospace'> AvdanDOE 0.3 'Sun and Moon' Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
             )
     )
 )
@@ -143,8 +173,8 @@
 (defwidget callAppRight []
     (box
         :class "appBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (button 
                 :class "appIconGeneric"
                 :onclick "google-chrome-stable&&disown"
@@ -156,8 +186,8 @@
 (defwidget callAppLeft []
     (box
         :class "appBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (button
                 :class "appIconGeneric"
                 :onclick "xfce4-terminal --working-directory=~&&disown"
@@ -169,14 +199,15 @@
 (defwidget callDashboard []
     (box
         :class "appBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (eventbox
                 :onclick "rofi -show drun&&disown"
                     (image 
-                        :class "appIconGeneric"
+                        :class "appImageGeneric"
                         :path "../globalassets/avlogo.svg" 
-                        :image-width 32)
+                        :image-width 32
+                    )
             )
 
     )
@@ -189,8 +220,8 @@
 (defwidget timeDate []
     (box
         :class "textBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
         :orientation "vertical"
         :spacing -15
             (label 
@@ -211,8 +242,8 @@
 (defwidget iconWifi []
     (box
         :class "iconBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (button
                 :tooltip "Wi-Fi" 
                 :class "iconSmallGeneric" 
@@ -225,8 +256,8 @@
 (defwidget iconBluetooth []
     (box
         :class "iconBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (button 
                 :tooltip "Bluetooth" 
                 :class "iconSmallGeneric" 
@@ -242,8 +273,8 @@
         :onscroll "sh ./scripts/setvolume.sh {}"
             (box
                 :class "iconBoxGeneric"
-                :vexpand "false"
-                :hexpand "false"
+                :vexpand false
+                :hexpand false
                     (button 
                         :tooltip "Volume: ${volumePercentage}%" 
                         :class "iconSmallGeneric" 
@@ -257,8 +288,8 @@
 (defwidget iconSettings []
     (box
         :class "iconBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (button 
                 :tooltip "Settings" 
                 :class "iconSmallGeneric" 
@@ -271,13 +302,105 @@
 (defwidget iconExpand []
     (box
         :class "iconBoxGeneric"
-        :vexpand "false"
-        :hexpand "false"
+        :vexpand false
+        :hexpand false
             (button 
                 :tooltip "iconExpand:iconBoxGeneric" 
                 :class "iconSmallGeneric" 
                 :onclick "echo later" 
-                "󰮫"
+                "󰾍"
+            )
+    )
+)
+
+;; ;; end status dock
+
+;; ;; status dock rollup
+
+(defwidget buttonWifi []
+    (box
+        :class "buttonBoxRollup"
+        :vexpand false
+        :hexpand false
+        :style "margin: 8 4 4 8;"
+            (button
+                :tooltip "Wi-Fi"
+                :class "iconGeneric"
+                :onclick "echo placeholder"
+                "${pollerWifi}"
+            )
+    )
+)
+
+(defwidget buttonBluetooth []
+    (box
+        :class "buttonBoxRollup"
+        :vexpand false
+        :hexpand false
+        :style "margin: 8 8 4 4;"
+            (button
+                :tooltip "Bluetooth" 
+                :class "iconSmallGeneric" 
+                :onclick "cutefish-settings -m bluetooth&&disown" 
+                "${pollerBluetooth}"
+            )
+    )
+)
+
+(defwidget buttonDND []
+    (box
+        :class "buttonBoxRollup"
+        :vexpand false
+        :hexpand false
+        :style "margin: 4 4 4 8;"
+            (button
+                :tooltip "buttonWifi:buttonBoxRollup"
+                :class "iconGeneric"
+                :onclick "echo placeholder"
+                "󰍷"
+            )
+    )
+)
+
+(defwidget buttonThemeToggle []
+    (box
+        :class "buttonBoxRollup"
+        :vexpand false
+        :hexpand false
+        :style "margin: 4 8 4 4;"
+            (button
+                :tooltip "buttonWifi:buttonBoxRollup"
+                :class "iconGeneric"
+                :onclick "echo placeholder"
+                "󱎖"
+            )
+    )
+)
+
+(defwidget volumeProgress []
+    (box 
+        :class "longBoxRollup"
+        :vexpand false
+        :hexpand false
+        :style "margin: 4 8 4 8;"
+            (progress
+                :class "progressGeneric"
+                :value 50
+                :orientation "h"
+            )
+    )
+)
+
+(defwidget brightnessProgress []
+    (box 
+        :class "longBoxRollup"
+        :vexpand false
+        :hexpand false
+        :style "margin: 4 8 8 8;"
+            (progress
+                :class "progressGeneric"
+                :value 50
+                :orientation "h"
             )
     )
 )
