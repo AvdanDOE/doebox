@@ -41,17 +41,5 @@ $fgc: #fff;
 .buttonBoxRollup{
     background-color: $fgc;
     border-radius: 8px;
-    //margin: 8 8 8 8;
     color: $bgc;
 }
-
-.progressGeneric trough{
-    border-radius: 8px;
-}
-
-progressbar trough{
-    min-width: 32px;
-    min-height: 24px;
-    background-color: $fgc;
-}
-
