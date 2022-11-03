@@ -6,11 +6,11 @@ The desktop environment element for AvdanDOE.
 
 ## components
 
-Doebox is built upon various things, like customized versions of Cutefish DE (not contained in this repository), elkowar's wacky widgets, plank and others.
+Doebox is built upon various things, like customized versions of Cutefish DE (not included in this repository, but should be ran on top of), elkowar's wacky widgets, plank and others.
 
 ## separate installation
 
-`(not encouraged to use it outside of the AvdanDOE yet, in case of any issues outside of AvdanDOE, do NOT open an issue, or mention you're using it outside of AvdanDOE)`
+You are beforehand heavily discouraged from running the doebox outside of AvdanDOE, but you can do so nevertheless, following the instruction.
 
 1. Make sure you have eww (elkowar's wacky widgets), material design icons font, harmonyos sans font and plank (bare minimum) on your system.
 2. Go into the `eww.yuck` file in `dock` and change the effective configuration path.
