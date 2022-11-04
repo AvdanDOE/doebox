@@ -319,7 +319,6 @@
             (button 
                 :tooltip "Expand rollup" 
                 :class "iconSmallGeneric" 
-                ;;:onclick "${ewwCmd} open dockstatus_rollup && ${ewwCmd} update dockstatusRollupBool=true"
                 :onclick "if [ `${ewwCmd} get dockstatusRollupBool` == 'false' ]; then ${ewwCmd} open dockstatus_rollup && ${ewwCmd} update dockstatusRollupBool=true; else ${ewwCmd} update dockstatusRollupBool=false; sleep 0.1; ${ewwCmd} close dockstatus_rollup; fi"
                 "󰾍"
             )
