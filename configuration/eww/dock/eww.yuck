@@ -159,7 +159,7 @@
                             (buttonThemeToggle)
                     )
                     (label 
-                        :markup "Hey there <b>kerichuu-avdanosTPkey</b>."
+                        :markup "Hey there uname-placeholder."
                     )
             )
     )
@@ -169,7 +169,7 @@
     (box
         :class "boxGeneric"
             (label 
-                :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running <span font_family='monospace'> AvdanDOE 0.3 'Sun and Moon' Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
+                :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running <span font_family='monospace'> AvdanDOE DevPre1 </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
             )
     )
 )
@@ -202,7 +202,7 @@
         :hexpand false
             (button
                 :class "appIconGeneric"
-                :onclick "xfce4-terminal --working-directory=~&&disown"
+                :onclick "cutefish-terminal&&disown"
                 "󰆍"
             )
     )
@@ -214,7 +214,7 @@
         :vexpand false
         :hexpand false
             (eventbox
-                :onclick "rofi -show drun&&disown"
+                :onclick "cutefish-launcher&&disown"
                     (image 
                         :class "appImageGeneric"
                         :path "../globalassets/avlogo.svg" 
