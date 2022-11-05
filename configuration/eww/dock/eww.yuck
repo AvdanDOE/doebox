@@ -36,6 +36,10 @@
     'sh ./scripts/settheme.sh'
 )
 
+(defpoll internalUname :interval "900s"
+    'whoami'
+)
+
 ;; end pollers
 
 
@@ -159,7 +163,7 @@
                             (buttonThemeToggle)
                     )
                     (label 
-                        :markup "Hey there uname-placeholder."
+                        :markup "Hey there ${internalUname}."
                     )
             )
     )
