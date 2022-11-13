@@ -6,7 +6,7 @@
 
 (defvar volumePercentage 0)
 
-(defvar ewwCmd "eww -c ~/Documents/VSCODEProjects/doebox/configuration/eww/dock")
+(defvar ewwCmd "eww -c ~/Documents/CodeProjects/doebox/configuration/eww/dock")
 
 (defvar dockstatusRollupBool false)
 
@@ -34,6 +34,10 @@
 
 (defpoll pollerTheme :interval "1s"
     'sh ./scripts/settheme.sh'
+)
+
+(defpoll internalUname :interval "900s"
+    'whoami'
 )
 
 ;; end pollers
@@ -159,7 +163,7 @@
                             (buttonThemeToggle)
                     )
                     (label 
-                        :markup "Hey there <b>kerichuu-avdanosTPkey</b>."
+                        :markup "Hey there <b>${internalUname}</b>."
                     )
             )
     )
@@ -367,7 +371,7 @@
         :hexpand false
         :style "margin: 4 4 4 8;"
             (button
-                :tooltip "buttonWifi:buttonBoxRollup"
+                :tooltip "Do not Disturb"
                 :class "iconGeneric"
                 :onclick "echo placeholder"
                 "󰍷"
@@ -382,7 +386,7 @@
         :hexpand false
         :style "margin: 4 8 4 4;"
             (button
-                :tooltip "buttonWifi:buttonBoxRollup"
+                :tooltip "Change theme"
                 :class "iconGeneric"
                 :onclick "echo placeholder"
                 "󱎖"
