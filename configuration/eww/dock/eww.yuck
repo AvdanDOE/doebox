@@ -10,6 +10,8 @@
 
 (defvar dockstatusRollupBool false)
 
+(defvar dockmainRollupBool false)
+
 ;; list pollers
 
 (defpoll pollerTime :interval "1s"
@@ -36,8 +38,20 @@
     'sh ./scripts/settheme.sh'
 )
 
-(defpoll internalUname :interval "900s"
+(defpoll internalUname :interval "7200s"
     'whoami'
+)
+
+(defpoll diskInfoGUSD :interval "60s"
+    'sh ./scripts/grabfreespace.sh gusd'
+)
+
+(defpoll diskInfoPCUSD :interval "60s"
+    'sh ./scripts/grabfreespace.sh pcusd'
+)
+
+(defpoll diskInfoGSIZE :interval "60s"
+    'sh ./scripts/grabfreespace.sh gsize'
 )
 
 ;; end pollers
@@ -47,7 +61,7 @@
 ;; list windows
 
 (defwindow dockdynamic
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "-23%"
                 :y "-1%"
@@ -59,7 +73,7 @@
 
 
 (defwindow dockmain
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "0%"
                 :y "-1%"
@@ -72,7 +86,7 @@
 
 
 (defwindow dockstatic
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "15%"
                 :y "-1%"
@@ -84,7 +98,7 @@
 
 
 (defwindow dockstatus
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "32%"
                 :y "-1%"
@@ -95,14 +109,25 @@
 )
 
 (defwindow dockstatus_rollup
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "32%"
-                :y "-8%"
+                :y "-9%"
                 :width "15%"
                 :height "18%"
                 :anchor "bottom center")
     (dockstatus_rollup_layout)
+)
+
+(defwindow dockmain_rollup
+    :windowtype "normal" ;; assign dock on debug end
+    :geometry (geometry
+                :x "0%"
+                :y "-9%"
+                :width "47%"
+                :height "50%"
+                :anchor "bottom center")
+    (dockmain_rollup_layout)
 )
 
 ;; end windows
@@ -118,6 +143,17 @@
             (callAppLeft)
             (callDashboard)
             (callAppRight)
+    )
+)
+
+(defwidget dockmain_rollup_layout []
+    (box
+        :orientation "vertical"
+        :class "boxGeneric"
+        (mainrollupTopRow)
+        (mainrollupMiddleRow)
+        (mainrollupBottomRow)
+        (mainrollupSubRow)
     )
 )
 
@@ -218,7 +254,7 @@
         :vexpand false
         :hexpand false
             (eventbox
-                :onclick "rofi -show drun&&disown"
+                :onclick "if [ `${ewwCmd} get dockmainRollupBool` == 'false' ]; then ${ewwCmd} open dockmain_rollup && ${ewwCmd} update dockmainRollupBool=true; else ${ewwCmd} update dockmainRollupBool=false; sleep 0.1; ${ewwCmd} close dockmain_rollup; fi"
                     (image 
                         :class "appImageGeneric"
                         :path "../globalassets/avlogo.svg" 
@@ -393,5 +429,196 @@
             )
     )
 )
+
+;; ;; end status dock rollup
+
+;; ;; begin main rollup
+
+;; ;; ;; TOP ROW
+
+(defwidget mainrollupTopRow [] ;; used for 3 top widgets // todo: color
+    (box
+        :class "boxGeneric"
+        :vexpand false
+        :hexpand false
+        :orientation "horizontal"
+            (mruTopLeftSection)
+            (mruTopMiddleSection)
+            (mruTopRightSection)
+    )
+)
+
+(defwidget mruTopLeftSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "left section layout")
+    )
+)
+
+(defwidget mruTopMiddleSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "middle section layout")
+    )
+)
+
+(defwidget mruTopRightSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "right section layout")
+    )
+)
+
+;; ;; ;; END TOP ROW
+
+;; ;; ;; BEGIN MIDDLE ROW
+
+(defwidget mainrollupMiddleRow []
+    (box
+        :class "boxGeneric"
+        :vexpand false
+        :hexpand false
+            (mruMiddleLeftSection)
+            (mruMiddleMiddleSection)
+            (mruMiddleRightSection)
+    )
+)
+
+(defwidget mruMiddleLeftSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "apps 1 left")
+    )
+)
+
+(defwidget mruMiddleMiddleSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "apps 2 right")
+    )
+)
+
+(defwidget mruMiddleRightSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "pick up where you left off space")
+    )
+)
+
+;; ;; ;; END MIDDLE SECTION
+
+;; ;; ;; BEGIN BOTTOM SECTION
+
+(defwidget mainrollupBottomRow []
+    (box
+        :class "boxGeneric"
+        :vexpand false
+        :hexpand false
+            (mruBottomLeftSection)
+            (mruBottomMiddleSection)
+            (mruBottomRightSection)
+    )
+)
+
+(defwidget mruBottomLeftSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "arrangements 1")
+    )
+)
+
+(defwidget mruBottomMiddleSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "arrangements 2")
+    )
+)
+
+(defwidget mruBottomRightSection []
+    (box
+        :class "boxColorful"
+        :vexpand false
+        :hexpand false
+            (label :text "extras")
+    )
+)
+
+;; ;; ;; END BOTTOM SECTION
+
+;; ;; ;; BEGIN SUBSECTION
+
+(defwidget mainrollupSubRow []
+    (box
+        :vexpand false
+        :hexpand false
+        :orientation "vertical"
+            (mruSubSpacer)
+            (mruSubSection)
+    )
+)
+
+(defwidget mruSubSpacer []
+    (box
+        :vexpand false
+        :hexpand false
+    )
+)
+
+(defwidget mruSubSection []
+    (box
+        :vexpand false
+        :hexpand false
+        :orientation "horizontal"
+            (mruSubProfile)
+            (mruSubPowermenu)
+            (mruSubDrivespace)
+    )
+)
+
+(defwidget mruSubProfile []
+    (box
+        :vexpand false
+        :hexpand false
+        :space-evenly false
+            (label :text "(image here)")
+            (label :text "${internalUname}")
+    )
+)
+
+(defwidget mruSubPowermenu []
+    (box
+        :vexpand false
+        :hexpand false
+            (button :class "iconGeneric" :onclick "echo placeholder" "󰒓")
+            (button :class "iconGeneric" :onclick "echo placeholder" "󰐥")
+            (button :class "iconGeneric" :onclick "echo placeholder" "󰀻")
+    )
+)
+
+(defwidget mruSubDrivespace []
+    (box
+        :vexpand false
+        :hexpand false
+            (label :class "textNormalGeneric" :text "󰋊 ${diskInfoGUSD}/${diskInfoGSIZE}")
+    )
+)
+
+;; ;; ;; END SUBSECTION
 
 ;; end microwidgets
