@@ -12,7 +12,7 @@ $fgc: #fff;
 .boxGeneric {
     background-color: $bgc;
     border-radius: 8px;
-    opacity: 0.8;
+    opacity: 0.9;
     color: $fgc;
 }
 
@@ -53,5 +53,11 @@ progressbar trough{
     min-width: 32px;
     min-height: 24px;
     background-color: $fgc;
+}
+
+.boxColorful{
+    background-color: #222;
+    border-radius: 8px;
+    color: $fgc;
 }
 
