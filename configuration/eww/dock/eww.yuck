@@ -1,4 +1,4 @@
-;; doebox/dock
+;; doebox/dock v1lune
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
@@ -235,7 +235,7 @@
     (box
         :class "boxGeneric"
             (label 
-                :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running <span font_family='monospace'> AvdanDOE 0.3 'Sun and Moon' Public </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
+                :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running DOEBox v1lune-dp2 󰌾 "
             )
     )
 )
