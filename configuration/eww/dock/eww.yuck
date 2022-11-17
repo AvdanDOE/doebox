@@ -195,8 +195,18 @@
                     (box
                         :orientation "horizontal"
                         :class "layoutBoxGeneric"
-                            (buttonWifi)
-                            (buttonBluetooth)
+                            (statusRollupButton
+                                :margins "8 4 4 8"
+                                :tt "Wi-Fi"
+                                :action "echo placeholder"
+                                :icon "${pollerWifi}"
+                            )
+                            (statusRollupButton
+                                :margins "8 8 4 4"
+                                :tt "Bluetooth"
+                                :action "cutefish-settings -m bluetooth&&disown"
+                                :icon "${pollerBluetooth}"
+                            )
                     )
                     (box
                         :orientation "horizontal"
@@ -375,32 +385,17 @@
 
 ;; ;; status dock rollup
 
-(defwidget buttonWifi []
+(defwidget statusRollupButton [margins tt action icon]
     (box
         :class "buttonBoxRollup"
         :vexpand false
         :hexpand false
-        :style "margin: 8 4 4 8;"
+        :style "margin: ${margins};"
             (button
-                :tooltip "Wi-Fi"
+                :tooltip "${tt}"
                 :class "iconGeneric"
-                :onclick "echo placeholder"
-                "${pollerWifi}"
-            )
-    )
-)
-
-(defwidget buttonBluetooth []
-    (box
-        :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
-        :style "margin: 8 8 4 4;"
-            (button
-                :tooltip "Bluetooth" 
-                :class "iconSmallGeneric" 
-                :onclick "cutefish-settings -m bluetooth&&disown" 
-                "${pollerBluetooth}"
+                :onclick "${action}"
+                "${icon}"
             )
     )
 )
@@ -456,7 +451,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "left section layout")
+            (label 
+                :text "left section layout"
+            )
     )
 )
 
@@ -464,7 +461,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "middle section layout")
+            (label 
+                :text "middle section layout"
+            )
     )
 )
 
@@ -472,7 +471,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "right section layout")
+            (label 
+                :text "right section layout"
+            )
     )
 )
 
@@ -494,7 +495,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "apps 1 left")
+            (label 
+                :text "apps 1 left"
+            )
     )
 )
 
@@ -502,7 +505,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "apps 2 right")
+            (label 
+                :text "apps 2 right"
+            )
     )
 )
 
@@ -510,7 +515,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "pick up where you left off space")
+            (label 
+                :text "pick up where you left off space"
+            )
     )
 )
 
@@ -532,7 +539,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "arrangements 1")
+            (label 
+                :text "arrangements 1"
+            )
     )
 )
 
@@ -540,7 +549,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "arrangements 2")
+            (label 
+                :text "arrangements 2"
+            )
     )
 )
 
@@ -548,7 +559,9 @@
     (box
         :vexpand false
         :hexpand false
-            (label :text "extras")
+            (label 
+                :text "extras"
+            )
     )
 )
 
@@ -589,8 +602,12 @@
         :vexpand false
         :hexpand false
         :space-evenly false
-            (label :text "(image here)")
-            (label :text "${internalUname}")
+            (label 
+                :text "(image here)"
+            )
+            (label 
+                :text "${internalUname}"
+            )
     )
 )
 
@@ -598,17 +615,46 @@
     (box
         :vexpand false
         :hexpand false
-            (button :class "iconGeneric" :onclick "echo placeholder" "󰒓")
-            (button :class "iconGeneric" :onclick "echo placeholder" "󰐥")
-            (button :class "iconGeneric" :onclick "echo placeholder" "󰀻")
+            (mruSubPowermenuButton 
+                :action "echo placeholder" 
+                :icon "󰒓"
+            )
+            (mruSubPowermenuButton 
+                :action "echo placeholder" 
+                :icon "󰐥"
+            )
+            (mruSubPowermenuButton 
+                :action "echo placeholder" 
+                :icon "󰀻"
+            )
     )
 )
+
+;; ;; ;; ;; buttons for subpowermenu
+
+(defwidget mruSubPowermenuButton [icon action]
+    (box
+        :vexpand false
+        :hexpand false
+            (button 
+                :class "iconGeneric"
+                :onclick "${action}" 
+                "${icon}"
+            )
+
+    )
+)
+
+;; ;; ;; ;; end buttons for subpowermenu
 
 (defwidget mruSubDrivespace []
     (box
         :vexpand false
         :hexpand false
-            (label :class "textNormalGeneric" :text "󰋊 ${diskInfoGUSD}/${diskInfoGSIZE}")
+            (label 
+                :class "textNormalGeneric" 
+                :text "󰋊 ${diskInfoGUSD}/${diskInfoGSIZE}"
+            )
     )
 )
 
