@@ -211,8 +211,18 @@
                     (box
                         :orientation "horizontal"
                         :class "layoutBoxGeneric"
-                            (buttonDND)
-                            (buttonThemeToggle)
+                            (statusRollupButton
+                                :margins "4 4 4 8"
+                                :tt "Do not Disturb"
+                                :action "echo placeholder"
+                                :icon "󰍷"
+                            )
+                            (statusRollupButton
+                                :margins "4 8 4 4"
+                                :tt "Change theme"
+                                :action "echo placeholder"
+                                :icon "󱎖"
+                            )
                     )
                     (label 
                         :markup "Hey there <b>${internalUname}</b>."
@@ -396,36 +406,6 @@
                 :class "iconGeneric"
                 :onclick "${action}"
                 "${icon}"
-            )
-    )
-)
-
-(defwidget buttonDND []
-    (box
-        :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
-        :style "margin: 4 4 4 8;"
-            (button
-                :tooltip "Do not Disturb"
-                :class "iconGeneric"
-                :onclick "echo placeholder"
-                "󰍷"
-            )
-    )
-)
-
-(defwidget buttonThemeToggle []
-    (box
-        :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
-        :style "margin: 4 8 4 4;"
-            (button
-                :tooltip "Change theme"
-                :class "iconGeneric"
-                :onclick "echo placeholder"
-                "󱎖"
             )
     )
 )
