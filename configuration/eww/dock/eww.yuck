@@ -235,7 +235,7 @@
     (box
         :class "boxGeneric"
             (label 
-                :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running DOEBox v1lune-dp2 󰌾 "
+                :markup "${pollerTheme} <b>AvdanDOE</b> Alpha 'Hydraulic' 0.4: Running DOEBox v1lune-dp1 󰌾 "
             )
     )
 )
