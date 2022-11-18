@@ -269,6 +269,20 @@
     )
 )
 
+(defwidget statusGenericIcon [tt action icon]
+    (box
+        :class "iconBoxGeneric"
+        :vexpand false
+        :hexpand false
+            (button 
+                :tooltip "${tt}"
+                :class "iconSmallGeneric"
+                :onclick "${action}"
+                "${icon}"
+            )
+    )
+)
+
 ;; ;; end status dock
 
 ;; ;; status dock rollup
