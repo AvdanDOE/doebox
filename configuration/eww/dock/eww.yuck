@@ -35,10 +35,10 @@
             (box
                 :orientation "vertical"
                 :class "boxGeneric"
-                (mainrollupTopRow)
-                (mainrollupMiddleRow)
-                (mainrollupBottomRow)
-                (mainrollupSubRow)
+                    (mainrollupTopRow)
+                    (mainrollupMiddleRow)
+                    (mainrollupBottomRow)
+                    (mainrollupSubRow)
             )
     )
 )
@@ -56,11 +56,35 @@
         :orientation "horizontal"
         :class "boxGeneric"
             (label :text "")
-            (iconWifi)
-            (iconBluetooth)
-            (iconVolume)
-            (iconSettings)
-            (iconExpand)
+            (statusGenericIcon
+                :tt "Wi-Fi"
+                :action "cutefish-settings -m wifi&&disown"
+                :icon "${pollerWifi}"
+            )
+            (statusGenericIcon
+                :tt "Bluetooth"
+                :action "cutefish-settings -m bluetooth&&disown"
+                :icon "${pollerBluetooth}"
+            )
+            (eventbox
+                :onhover "${ewwCmd} update volumePercentage=$(pamixer --get-volume)"
+                :onscroll "sh ./scripts/setvolume.sh {}"
+                (statusGenericIcon
+                    :tt "Volume: ${volumePercentage}%" 
+                    :action "cutefish-settings -m sound&&disown"
+                    :icon "${pollerVolume}"
+                )
+            )
+            (statusGenericIcon
+                :tt "Settings"
+                :action "cutefish-settings&&disown"
+                :icon "󰒓"
+            )
+            (statusGenericIcon
+                :tt "Rollup"
+                :action "if [ `${ewwCmd} get dockstatusRollupBool` == 'false' ]; then ${ewwCmd} open dockstatus_rollup && ${ewwCmd} update dockstatusRollupBool=true; else ${ewwCmd} update dockstatusRollupBool=false; sleep 0.1; ${ewwCmd} close dockstatus_rollup; fi"
+                :icon "󰾍"
+            )
             (label :text "")
     )
 )
@@ -78,7 +102,7 @@
                             (statusRollupButton
                                 :margins "8 4 4 8"
                                 :tt "Wi-Fi"
-                                :action "echo placeholder"
+                                :action "cutefish-settings -m wifi&&disown"
                                 :icon "${pollerWifi}"
                             )
                             (statusRollupButton
@@ -194,80 +218,6 @@
 ;; ;; end dynamic dock
 
 ;; ;; status dock
-
-(defwidget iconWifi []
-    (box
-        :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
-            (button
-                :tooltip "Wi-Fi" 
-                :class "iconSmallGeneric" 
-                :onclick "cutefish-settings -m wifi&&disown" 
-                "${pollerWifi}"
-            )
-    )
-)
-
-(defwidget iconBluetooth []
-    (box
-        :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
-            (button 
-                :tooltip "Bluetooth" 
-                :class "iconSmallGeneric" 
-                :onclick "cutefish-settings -m bluetooth&&disown" 
-                "${pollerBluetooth}"
-            )
-    )
-)
-
-(defwidget iconVolume []
-    (eventbox
-        :onhover "${ewwCmd} update volumePercentage=$(pamixer --get-volume)"
-        :onscroll "sh ./scripts/setvolume.sh {}"
-            (box
-                :class "iconBoxGeneric"
-                :vexpand false
-                :hexpand false
-                    (button 
-                        :tooltip "Volume: ${volumePercentage}%" 
-                        :class "iconSmallGeneric" 
-                        :onclick "cutefish-settings -m sound&&disown" 
-                        "${pollerVolume}"
-                    )
-            )
-    )
-)
-
-(defwidget iconSettings []
-    (box
-        :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
-            (button 
-                :tooltip "Settings" 
-                :class "iconSmallGeneric" 
-                :onclick "cutefish-settings&&disown" 
-                "󰒓"
-            )
-    )
-)
-
-(defwidget iconExpand []
-    (box
-        :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
-            (button 
-                :tooltip "Expand rollup" 
-                :class "iconSmallGeneric" 
-                :onclick "if [ `${ewwCmd} get dockstatusRollupBool` == 'false' ]; then ${ewwCmd} open dockstatus_rollup && ${ewwCmd} update dockstatusRollupBool=true; else ${ewwCmd} update dockstatusRollupBool=false; sleep 0.1; ${ewwCmd} close dockstatus_rollup; fi"
-                "󰾍"
-            )
-    )
-)
 
 (defwidget statusGenericIcon [tt action icon]
     (box
