@@ -16,18 +16,14 @@ $fgc: #fff;
     color: $fgc;
 }
 
+.buttonBoxRollup{
+    background-color: $fgc;
+    border-radius: 8px;
+    color: $bgc;
+}
+
 .appIconGeneric {
     font-size: 32px;
-}
-
-.textNormalGeneric{
-    font-size: 18px;
-    font-weight: normal;
-}
-
-.textSubnormalGeneric{
-    font-size: 16px;
-    font-weight: normal;
 }
 
 .iconSmallGeneric{
@@ -38,9 +34,12 @@ $fgc: #fff;
     font-size: 24px;
 }
 
-.buttonBoxRollup{
-    background-color: $fgc;
-    border-radius: 8px;
-    //margin: 8 8 8 8;
-    color: $bgc;
+.textNormalGeneric{
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.textSubnormalGeneric{
+    font-size: 16px;
+    font-weight: normal;
 }
