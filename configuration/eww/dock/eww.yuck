@@ -438,10 +438,7 @@
 )
 
 (defwidget mruSubSpacer []
-    (box
-        :vexpand false
-        :hexpand false
-    )
+    (box)
 )
 
 (defwidget mruSubSection []
