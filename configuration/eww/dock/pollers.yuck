@@ -1,0 +1,47 @@
+;; doebox/dock v1lune
+;; based on eww
+;; for licensing and info refer to avdandoe/doebox
+
+;; list pollers
+
+(defpoll pollerTime :interval "1s"
+    'date +%H:%M '
+)
+
+(defpoll pollerDate :interval "1s"
+    'date "+%A, %B %d"'
+)
+
+(defpoll pollerVolume :interval "1s"
+    'sh ./scripts/grabvolume.sh'
+)
+
+(defpoll pollerBluetooth :interval "3s"
+    'sh ./scripts/grabbluetooth.sh'
+)
+
+(defpoll pollerWifi :interval "3s"
+    'sh ./scripts/grabwifi.sh'
+)
+
+(defpoll pollerTheme :interval "1s"
+    'sh ./scripts/settheme.sh'
+)
+
+(defpoll internalUname :interval "7200s"
+    'whoami'
+)
+
+(defpoll diskInfoGUSD :interval "60s"
+    'sh ./scripts/grabfreespace.sh gusd'
+)
+
+(defpoll diskInfoPCUSD :interval "60s"
+    'sh ./scripts/grabfreespace.sh pcusd'
+)
+
+(defpoll diskInfoGSIZE :interval "60s"
+    'sh ./scripts/grabfreespace.sh gsize'
+)
+
+;; end pollers

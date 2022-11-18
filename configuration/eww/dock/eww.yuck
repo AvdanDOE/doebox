@@ -5,6 +5,8 @@
 ;; include
 
 (include "./config.yuck")
+(include "./pollers.yuck")
+(include "./windows.yuck")
 
 ;; define variables
 
@@ -13,128 +15,6 @@
 (defvar dockstatusRollupBool false)
 
 (defvar dockmainRollupBool false)
-
-;; list pollers
-
-(defpoll pollerTime :interval "1s"
-    'date +%H:%M '
-)
-
-(defpoll pollerDate :interval "1s"
-    'date "+%A, %B %d"'
-)
-
-(defpoll pollerVolume :interval "1s"
-    'sh ./scripts/grabvolume.sh'
-)
-
-(defpoll pollerBluetooth :interval "3s"
-    'sh ./scripts/grabbluetooth.sh'
-)
-
-(defpoll pollerWifi :interval "3s"
-    'sh ./scripts/grabwifi.sh'
-)
-
-(defpoll pollerTheme :interval "1s"
-    'sh ./scripts/settheme.sh'
-)
-
-(defpoll internalUname :interval "7200s"
-    'whoami'
-)
-
-(defpoll diskInfoGUSD :interval "60s"
-    'sh ./scripts/grabfreespace.sh gusd'
-)
-
-(defpoll diskInfoPCUSD :interval "60s"
-    'sh ./scripts/grabfreespace.sh pcusd'
-)
-
-(defpoll diskInfoGSIZE :interval "60s"
-    'sh ./scripts/grabfreespace.sh gsize'
-)
-
-;; end pollers
-
-
-
-;; list windows
-
-(defwindow dockdynamic
-    :windowtype "normal"
-    :geometry (geometry
-                :x "-23%"
-                :y "-1%"
-                :width "33%"
-                :height "6%"
-                :anchor "bottom center")
-    (dockdynamic_layout)
-)
-
-
-(defwindow dockmain
-    :windowtype "normal"
-    :geometry (geometry
-                :x "0%"
-                :y "-1%"
-                :width "11%"
-                :height "6%"
-                :anchor "bottom center")
-                :reserve (struts :distance "8%" :side "bottom")
-    (dockmain_layout)
-)
-
-
-(defwindow dockstatic
-    :windowtype "normal"
-    :geometry (geometry
-                :x "15%"
-                :y "-1%"
-                :width "17%"
-                :height "6%"
-                :anchor "bottom center")
-    (dockstatic_layout)
-)
-
-
-(defwindow dockstatus
-    :windowtype "normal"
-    :geometry (geometry
-                :x "32%"
-                :y "-1%"
-                :width "15%"
-                :height "6%"
-                :anchor "bottom center")
-    (dockstatus_layout)
-)
-
-(defwindow dockstatus_rollup
-    :windowtype "normal"
-    :geometry (geometry
-                :x "32%"
-                :y "-9%"
-                :width "15%"
-                :height "18%"
-                :anchor "bottom center")
-    (dockstatus_rollup_layout)
-)
-
-(defwindow dockmain_rollup
-    :windowtype "normal" ;; assign dock on debug end
-    :geometry (geometry
-                :x "0%"
-                :y "-9%"
-                :width "47%"
-                :height "50%"
-                :anchor "bottom center")
-    (dockmain_rollup_layout)
-)
-
-;; end windows
-
-
 
 ;; def layouts
 
@@ -241,8 +121,6 @@
 )
 
 ;; end layouts
-
-
 
 ;; def microwidgets
 

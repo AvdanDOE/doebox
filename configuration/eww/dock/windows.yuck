@@ -1,0 +1,77 @@
+;; doebox/dock v1lune
+;; based on eww
+;; for licensing and info refer to avdandoe/doebox
+
+;; list windows
+
+(defwindow dockdynamic
+    :windowtype "normal"
+    :geometry (geometry
+                :x "-23%"
+                :y "-1%"
+                :width "33%"
+                :height "6%"
+                :anchor "bottom center")
+    (dockdynamic_layout)
+)
+
+
+(defwindow dockmain
+    :windowtype "normal"
+    :geometry (geometry
+                :x "0%"
+                :y "-1%"
+                :width "11%"
+                :height "6%"
+                :anchor "bottom center")
+                :reserve (struts :distance "8%" :side "bottom")
+    (dockmain_layout)
+)
+
+
+(defwindow dockstatic
+    :windowtype "normal"
+    :geometry (geometry
+                :x "15%"
+                :y "-1%"
+                :width "17%"
+                :height "6%"
+                :anchor "bottom center")
+    (dockstatic_layout)
+)
+
+
+(defwindow dockstatus
+    :windowtype "normal"
+    :geometry (geometry
+                :x "32%"
+                :y "-1%"
+                :width "15%"
+                :height "6%"
+                :anchor "bottom center")
+    (dockstatus_layout)
+)
+
+(defwindow dockstatus_rollup
+    :windowtype "normal"
+    :geometry (geometry
+                :x "32%"
+                :y "-9%"
+                :width "15%"
+                :height "18%"
+                :anchor "bottom center")
+    (dockstatus_rollup_layout)
+)
+
+(defwindow dockmain_rollup
+    :windowtype "normal" ;; assign dock on debug end
+    :geometry (geometry
+                :x "0%"
+                :y "-9%"
+                :width "47%"
+                :height "50%"
+                :anchor "bottom center")
+    (dockmain_rollup_layout)
+)
+
+;; end windows
