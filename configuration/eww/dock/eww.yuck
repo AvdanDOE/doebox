@@ -139,7 +139,7 @@
     (box
         :class "boxGeneric"
             (label 
-                :text "AVDebug v1lune [ ctAccent:${cutefishTheme} ]"
+                :text "AVDebug v1lune [ ctAccent:${pollerTheme} ]"
                 ;;:markup "${pollerTheme} <b>AvdanDOE</b> Alpha 'Hydraulic' 0.4: Running DOEBox v1lune-dp1 󰌾 "
             )
     )

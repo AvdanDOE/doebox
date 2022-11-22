@@ -19,18 +19,20 @@
     'sh ./scripts/grabvolume.sh'
 )
 
-(defpoll pollerBluetooth 
+(defpoll pollerBluetooth
+    :initial "󰂯" 
     :interval "3s"
     'sh ./scripts/grabbluetooth.sh'
 )
 
-(defpoll pollerWifi 
+(defpoll pollerWifi
+    :initial "󰤨"
     :interval "3s"
     'sh ./scripts/grabwifi.sh'
 )
 
 (defpoll pollerTheme 
-    :interval "1s"
+    :interval "7200s"
     'sh ./scripts/settheme.sh'
 )
 
