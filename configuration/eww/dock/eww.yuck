@@ -139,7 +139,8 @@
     (box
         :class "boxGeneric"
             (label 
-                :markup "${pollerTheme} <b>AvdanDOE</b> Alpha 'Hydraulic' 0.4: Running DOEBox v1lune-dp1 󰌾 "
+                :text "AVDebug v1lune [ ctAccent:${cutefishTheme} ]"
+                ;;:markup "${pollerTheme} <b>AvdanDOE</b> Alpha 'Hydraulic' 0.4: Running DOEBox v1lune-dp1 󰌾 "
             )
     )
 )
@@ -237,7 +238,7 @@
 
 ;; ;; status dock rollup
 
-(defwidget statusRollupButton [margins tt action icon]
+(defwidget statusRollupButton [margins tt action icon ?acc]
     (box
         :class "buttonBoxRollup"
         :vexpand false
