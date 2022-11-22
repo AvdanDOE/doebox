@@ -3,3 +3,5 @@
 ;; for licensing and info refer to avdandoe/doebox
 
 (defvar ewwCmd "eww -c ~/Documents/CodeProjects/doebox/configuration/eww/dock")
+(defvar ctAccent "0")
+(defvar ctDark "true")
