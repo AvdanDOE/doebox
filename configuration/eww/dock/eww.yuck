@@ -6,7 +6,7 @@
 
 (defvar volumePercentage 0)
 
-(defvar ewwCmd "avdeww -c /etc/doebox/cfg/eww/")
+(defvar ewwCmd "eww -c /etc/avdanos/dock")
 
 (defvar dockstatusRollupBool false)
 
@@ -32,7 +32,7 @@
     'sh ./scripts/grabwifi.sh'
 )
 
-(defpoll pollerTheme :interval "1s"
+(defpoll pollerTheme :interval "3600s"
     'sh ./scripts/settheme.sh'
 )
 
@@ -171,6 +171,8 @@
 
 (defwidget dockdynamic_layout []
     (box
+        :hexpand false
+        :vexpand false
         :class "boxGeneric"
             (label 
                 :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running <span font_family='monospace'> AvdanDOE DevPre1 </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
