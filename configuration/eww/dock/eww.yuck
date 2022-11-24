@@ -175,7 +175,7 @@
         :vexpand false
         :class "boxGeneric"
             (label 
-                :markup "${pollerTheme} <b>AvdanOS</b> Alpha: Running <span font_family='monospace'> AvdanDOE DevPre1 </span> on <span font_family='monospace'> DOEBox v1lune </span> 󰌾 "
+                :markup "${pollerTheme} <b>AvdanDOE</b>: <span font_family='monospace'>DevPre1</span> on <span font_family='monospace'>DOEBox v1lune</span> 󰌾 "
             )
     )
 )
@@ -344,7 +344,7 @@
             (button
                 :tooltip "Wi-Fi"
                 :class "iconGeneric"
-                :onclick "echo placeholder"
+                :onclick "cutefish-settings -m wlan&&disown"
                 "${pollerWifi}"
             )
     )
@@ -372,9 +372,9 @@
         :hexpand false
         :style "margin: 4 4 4 8;"
             (button
-                :tooltip "buttonWifi:buttonBoxRollup"
+                :tooltip "Do not Disturb"
                 :class "iconGeneric"
-                :onclick "echo placeholder"
+                :onclick "cutefish-settings -m notifications&&disown"
                 "󰍷"
             )
     )
@@ -387,9 +387,9 @@
         :hexpand false
         :style "margin: 4 8 4 4;"
             (button
-                :tooltip "buttonWifi:buttonBoxRollup"
+                :tooltip "Appearance"
                 :class "iconGeneric"
-                :onclick "echo placeholder"
+                :onclick "cutefish-settings -m appearance&&disown"
                 "󱎖"
             )
     )
