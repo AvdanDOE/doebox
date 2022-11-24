@@ -6,7 +6,7 @@
 
 (defvar volumePercentage 0)
 
-(defvar ewwCmd "eww -c /etc/doebox/cfg/eww/dock/")
+(defvar ewwCmd "eww -c /etc/avdanos/dock")
 
 (defvar dockstatusRollupBool false)
 
