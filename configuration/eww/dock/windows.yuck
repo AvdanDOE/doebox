@@ -5,7 +5,7 @@
 ;; list windows
 
 (defwindow dockdynamic
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "-23%"
                 :y "-1%"
@@ -17,7 +17,7 @@
 
 
 (defwindow dockmain
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "0%"
                 :y "-1%"
@@ -30,7 +30,7 @@
 
 
 (defwindow dockstatic
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "15%"
                 :y "-1%"
@@ -42,7 +42,7 @@
 
 
 (defwindow dockstatus
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "32%"
                 :y "-1%"
@@ -53,7 +53,7 @@
 )
 
 (defwindow dockstatus_rollup
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "32%"
                 :y "-9%"
@@ -64,7 +64,7 @@
 )
 
 (defwindow dockmain_rollup
-    :windowtype "normal" ;; assign dock on debug end
+    :windowtype "dock" ;; assign dock on debug end
     :geometry (geometry
                 :x "0%"
                 :y "-9%"
