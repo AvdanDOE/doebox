@@ -15,7 +15,7 @@
 )
 
 (defpoll pollerVolume 
-    :interval "1s"
+    :interval "60s"
     'sh ./scripts/grabvolume.sh'
 )
 
@@ -40,20 +40,4 @@
     :interval "7200s"
     'whoami'
 )
-
-(defpoll diskInfoGUSD 
-    :interval "60s"
-    'sh ./scripts/grabfreespace.sh gusd'
-)
-
-(defpoll diskInfoPCUSD 
-    :interval "60s"
-    'sh ./scripts/grabfreespace.sh pcusd'
-)
-
-(defpoll diskInfoGSIZE 
-    :interval "60s"
-    'sh ./scripts/grabfreespace.sh gsize'
-)
-
 ;; end pollers
