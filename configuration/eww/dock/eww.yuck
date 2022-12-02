@@ -4,7 +4,7 @@
 
 ;; include
 
-(include "./config.yuck")
+; (include "./config.yuck")
 (include "./pollers.yuck")
 (include "./windows.yuck")
 
@@ -67,12 +67,12 @@
                 :icon "${pollerBluetooth}"
             )
             (eventbox
-                :onhover "${ewwCmd} update volumePercentage=$(pamixer --get-volume)"
+                :onhover "${EWW_CMD} update volumePercentage=$(pamixer --get-volume)"
                 :onscroll "sh ./scripts/setvolume.sh {}"
                 (statusGenericIcon
                     :tt "Volume: ${volumePercentage}%" 
                     :action "cutefish-settings -m sound&&disown"
-                    :icon "${pollerVolume}"
+                    :icon "󰕾"
                 )
             )
             (statusGenericIcon
@@ -82,7 +82,7 @@
             )
             (statusGenericIcon
                 :tt "Rollup"
-                :action "if [ `${ewwCmd} get dockstatusRollupBool` == 'false' ]; then ${ewwCmd} open dockstatus_rollup && ${ewwCmd} update dockstatusRollupBool=true; else ${ewwCmd} update dockstatusRollupBool=false; sleep 0.1; ${ewwCmd} close dockstatus_rollup; fi"
+                :action "if [ `${EWW_CMD} get dockstatusRollupBool` == 'false' ]; then ${EWW_CMD} open dockstatus_rollup && ${EWW_CMD} update dockstatusRollupBool=true; else ${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; fi"
                 :icon "󰾍"
             )
             (label :text "")
@@ -138,10 +138,31 @@
 (defwidget dockdynamic_layout []
     (box
         :class "boxGeneric"
-            (label 
-                :text "AVDebug v1lune [ ctAccent:${pollerTheme} ]"
-                ;;:markup "${pollerTheme} <b>AvdanDOE</b> Alpha 'Hydraulic' 0.4: Running DOEBox v1lune-dp1 󰌾 "
+            (overlay
+            (graph
+                :value "${round(EWW_CPU["avg"], 0)}"
+                :min 0
+                :max 100
+                :time-range "10s"
+                :line-style "round"
+                :thickness 3
+                :style "color: #0ff;"
             )
+            (graph
+                :value "${round(EWW_RAM["used_mem"]/107374100, 0)}"
+                :min 0
+                :max 80
+                :time-range "10s"
+                :line-style "round"
+                :thickness 3
+                :style "color: #f00;"
+            )
+        )
+            (label
+                :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
+                :wrap true
+            )
+
     )
 )
 
@@ -171,7 +192,7 @@
         :hexpand false
             (button
                 :class "appIconGeneric"
-                :onclick "xfce4-terminal --working-directory=~&&disown"
+                :onclick "cutefish-terminal&&disown"
                 "󰆍"
             )
     )
@@ -183,7 +204,7 @@
         :vexpand false
         :hexpand false
             (eventbox
-                :onclick "if [ `${ewwCmd} get dockmainRollupBool` == 'false' ]; then ${ewwCmd} open dockmain_rollup && ${ewwCmd} update dockmainRollupBool=true; else ${ewwCmd} update dockmainRollupBool=false; sleep 0.1; ${ewwCmd} close dockmain_rollup; fi"
+                :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; fi"
                     (image 
                         :class "appImageGeneric"
                         :path "../globalassets/avlogo.svg" 
@@ -225,11 +246,14 @@
         :class "iconBoxGeneric"
         :vexpand false
         :hexpand false
-            (button 
-                :tooltip "${tt}"
-                :class "iconSmallGeneric"
-                :onclick "${action}"
-                "${icon}"
+            (eventbox
+                :cursor "pointer"
+                    (button 
+                        :tooltip "${tt}"
+                        :class "iconSmallGeneric"
+                        :onclick "${action}"
+                        "${icon}"
+                    )
             )
     )
 )
@@ -244,11 +268,14 @@
         :vexpand false
         :hexpand false
         :style "margin: ${margins};"
-            (button
-                :tooltip "${tt}"
-                :class "iconGeneric"
-                :onclick "${action}"
-                "${icon}"
+            (eventbox
+                :cursor "pointer"
+                    (button
+                        :tooltip "${tt}"
+                        :class "iconGeneric"
+                        :onclick "${action}"
+                        "${icon}"
+                    )
             )
     )
 )
@@ -421,13 +448,16 @@
     (box
         :vexpand false
         :hexpand false
-        :space-evenly false
+        :space-evenly true
             (label 
+                :halign "center"
                 :text "(image here)"
             )
             (label 
+                :xalign 0
                 :text "${internalUname}"
             )
+            (label :text "")
     )
 )
 
@@ -436,11 +466,11 @@
         :vexpand false
         :hexpand false
             (mruSubPowermenuButton 
-                :action "echo placeholder" 
+                :action "cutefish-settings&&disown" 
                 :icon "󰒓"
             )
             (mruSubPowermenuButton 
-                :action "echo placeholder" 
+                :action "cutefish-shutdown&&disown" 
                 :icon "󰐥"
             )
             (mruSubPowermenuButton 
@@ -456,10 +486,13 @@
     (box
         :vexpand false
         :hexpand false
-            (button 
-                :class "iconGeneric"
-                :onclick "${action}" 
-                "${icon}"
+            (eventbox
+                :cursor "pointer"
+                    (button 
+                        :class "iconGeneric"
+                        :onclick "${action}" 
+                        "${icon}"
+                    )
             )
 
     )
@@ -473,7 +506,7 @@
         :hexpand false
             (label 
                 :class "textNormalGeneric" 
-                :text "󰋊 ${diskInfoGUSD}/${diskInfoGSIZE}"
+                :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
             )
     )
 )
