@@ -44,3 +44,28 @@ $accent: #4155CC;
     font-size: 16px;
     font-weight: normal;
 }
+
+scale trough{
+    all: unset;
+    background-color: #335555;
+    border-radius: 12px;
+    min-height: 20px;
+    min-width: 10px;
+    margin: .3rem 0 .3rem 0;
+}
+
+.testBar trough highlight{
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.FuckingDie{
+    border-radius: 8px;
+    background-image: url("../globalassets/profile.jpg");
+    min-width: 50px;
+    min-height: 50px;
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    margin: 10px 10px 10px 10px;
+}

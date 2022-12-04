@@ -139,30 +139,36 @@
     (box
         :class "boxGeneric"
             (overlay
-            (graph
-                :value "${round(EWW_CPU["avg"], 0)}"
-                :min 0
-                :max 100
-                :time-range "10s"
-                :line-style "round"
-                :thickness 3
-                :style "color: #0ff;"
+                (graph
+                    :value "${round(EWW_CPU["avg"], 0)}"
+                    :min 0
+                    :max 100
+                    :time-range "10s"
+                    :line-style "round"
+                    :thickness 3
+                    :style "color: #0ff;"
+                )
+                (graph
+                    :value "${round(EWW_RAM["used_mem"]/107374100, 0)}"
+                    :min 0
+                    :max 80
+                    :time-range "10s"
+                    :line-style "round"
+                    :thickness 3
+                    :style "color: #f00;"
+                )
             )
-            (graph
-                :value "${round(EWW_RAM["used_mem"]/107374100, 0)}"
-                :min 0
-                :max 80
-                :time-range "10s"
-                :line-style "round"
-                :thickness 3
-                :style "color: #f00;"
-            )
-        )
             (label
                 :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
                 :wrap true
             )
-
+            (scale
+                :class "testBar"
+                :draw-value true
+                :min 0
+                :max 100
+                :orientation "h"
+            )
     )
 )
 
@@ -448,12 +454,17 @@
     (box
         :vexpand false
         :hexpand false
-        :space-evenly true
-            (label 
-                :halign "center"
-                :text "(image here)"
+        :space-evenly false
+        :spacing 5
+            ;(image
+            ;    :path "../globalassets/profile.jpg"
+            ;    :image-width 30
+            ;    :class "FuckingDie"
+            ;)
+            (box
+                :class "FuckingDie"
             )
-            (label 
+            (label
                 :xalign 0
                 :text "${internalUname}"
             )
