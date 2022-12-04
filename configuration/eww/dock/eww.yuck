@@ -456,13 +456,8 @@
         :hexpand false
         :space-evenly false
         :spacing 5
-            ;(image
-            ;    :path "../globalassets/profile.jpg"
-            ;    :image-width 30
-            ;    :class "FuckingDie"
-            ;)
             (box
-                :class "FuckingDie"
+                :class "roundedProfileImage"
             )
             (label
                 :xalign 0
