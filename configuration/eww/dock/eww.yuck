@@ -19,156 +19,195 @@
 ;; def layouts
 
 (defwidget dockmain_layout []
-    (box
-        :orientation "horizontal"
-        :class "boxGeneric"
-            (callAppLeft)
-            (callDashboard)
-            (callAppRight)
+    (overlay
+        (box
+            :class "boxGeneric"     
+        )
+        (box
+            :orientation "horizontal"
+            :class "boxGenericOpaque"
+                (callAppLeft)
+                (callDashboard)
+                (callAppRight)
+        )
     )
 )
 
 (defwidget dockmain_rollup_layout []
-    (revealer
-        :transition "crossfade"
-        :reveal "${dockmainRollupBool}"
-            (box
-                :orientation "vertical"
-                :class "boxGeneric"
-                    (mainrollupTopRow)
-                    (mainrollupMiddleRow)
-                    (mainrollupBottomRow)
-                    (mainrollupSubRow)
-            )
+    (overlay
+        (box
+            :class "boxGeneric"
+        )
+        (revealer
+            :transition "crossfade"
+            :reveal "${dockmainRollupBool}"
+                (box
+                    :orientation "vertical"
+                    :class "boxGenericOpaque"
+                        (mainrollupTopRow)
+                        (mainrollupMiddleRow)
+                        (mainrollupBottomRow)
+                        (mainrollupSubRow)
+                )
+        )
     )
 )
 
 (defwidget dockstatic_layout []
-    (box
-        :orientation "horizontal"
-        :class "boxGeneric"
-            (timeDate)
+    (overlay
+        (box
+            :class "boxGeneric"
+        )
+        (box
+            :class "boxGenericOpaque"
+            :orientation "vertical"
+                (label
+                    :class "textNormalGeneric"
+                    :text "${pollerTime}"
+                    :valign "end"
+                )
+                (label
+                    :class "textSubnormalGeneric"
+                    :text "${pollerDate}"
+                    :valign "start"
+                )
+        )
     )
 )
 
 (defwidget dockstatus_layout []
-    (box
-        :orientation "horizontal"
-        :class "boxGeneric"
-            (label :text "")
-            (statusGenericIcon
-                :tt "Wi-Fi"
-                :action "cutefish-settings -m wifi&&disown"
-                :icon "${pollerWifi}"
-            )
-            (statusGenericIcon
-                :tt "Bluetooth"
-                :action "cutefish-settings -m bluetooth&&disown"
-                :icon "${pollerBluetooth}"
-            )
-            (eventbox
-                :onhover "${EWW_CMD} update volumePercentage=$(pamixer --get-volume)"
-                :onscroll "sh ./scripts/setvolume.sh {}"
+    (overlay
+        (box
+            :class "boxGeneric"
+        )
+        (box
+            :orientation "horizontal"
+            :class "boxGenericOpaque"
+                (label :text "")
                 (statusGenericIcon
-                    :tt "Volume: ${volumePercentage}%" 
-                    :action "cutefish-settings -m sound&&disown"
-                    :icon "󰕾"
+                    :tt "Wi-Fi"
+                    :action "cutefish-settings -m wifi&&disown"
+                    :icon "${pollerWifi}"
                 )
-            )
-            (statusGenericIcon
-                :tt "Settings"
-                :action "cutefish-settings&&disown"
-                :icon "󰒓"
-            )
-            (statusGenericIcon
-                :tt "Rollup"
-                :action "if [ `${EWW_CMD} get dockstatusRollupBool` == 'false' ]; then ${EWW_CMD} open dockstatus_rollup && ${EWW_CMD} update dockstatusRollupBool=true; else ${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; fi"
-                :icon "󰾍"
-            )
-            (label :text "")
+                (statusGenericIcon
+                    :tt "Bluetooth"
+                    :action "cutefish-settings -m bluetooth&&disown"
+                    :icon "${pollerBluetooth}"
+                )
+                (eventbox
+                    :onhover "${EWW_CMD} update volumePercentage=$(pamixer --get-volume)"
+                    :onscroll "sh ./scripts/setvolume.sh {}"
+                    (statusGenericIcon
+                        :tt "Volume: ${volumePercentage}%" 
+                        :action "cutefish-settings -m sound&&disown"
+                        :icon "󰕾"
+                    )
+                )
+                (statusGenericIcon
+                    :tt "Settings"
+                    :action "cutefish-settings&&disown"
+                    :icon "󰒓"
+                )
+                (statusGenericIcon
+                    :tt "Rollup"
+                    :action "if [ `${EWW_CMD} get dockstatusRollupBool` == 'false' ]; then ${EWW_CMD} open dockstatus_rollup && ${EWW_CMD} update dockstatusRollupBool=true; else ${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; fi"
+                    :icon "󰾍"
+                )
+                (label :text "")
+        )
     )
 )
 
 (defwidget dockstatus_rollup_layout []
-    (revealer
-        :transition "crossfade"
-        :reveal "${dockstatusRollupBool}"
-            (box
-                :orientation "vertical"
-                :class "boxGeneric"
-                    (box
-                        :orientation "horizontal"
-                        :class "layoutBoxGeneric"
-                            (statusRollupButton
-                                :margins "8 4 4 8"
-                                :tt "Wi-Fi"
-                                :action "cutefish-settings -m wifi&&disown"
-                                :icon "${pollerWifi}"
-                            )
-                            (statusRollupButton
-                                :margins "8 8 4 4"
-                                :tt "Bluetooth"
-                                :action "cutefish-settings -m bluetooth&&disown"
-                                :icon "${pollerBluetooth}"
-                            )
-                    )
-                    (box
-                        :orientation "horizontal"
-                        :class "layoutBoxGeneric"
-                            (statusRollupButton
-                                :margins "4 4 4 8"
-                                :tt "Do not Disturb"
-                                :action "echo placeholder"
-                                :icon "󰍷"
-                            )
-                            (statusRollupButton
-                                :margins "4 8 4 4"
-                                :tt "Change theme"
-                                :action "echo placeholder"
-                                :icon "󱎖"
-                            )
-                    )
-                    (label 
-                        :markup "Hey there <b>${internalUname}</b>."
-                    )
-            )
+    (overlay
+        (box
+            :class "boxGeneric"
+        )
+        (revealer
+            :transition "crossfade"
+            :reveal "${dockstatusRollupBool}"
+                (box
+                    :orientation "vertical"
+                    :class "boxGenericOpaque"
+                        (box
+                            :orientation "horizontal"
+                            :class "layoutboxGenericOpaque"
+                                (statusRollupButton
+                                    :margins "8 4 4 8"
+                                    :tt "Wi-Fi"
+                                    :action "cutefish-settings -m wifi&&disown"
+                                    :icon "${pollerWifi}"
+                                )
+                                (statusRollupButton
+                                    :margins "8 8 4 4"
+                                    :tt "Bluetooth"
+                                    :action "cutefish-settings -m bluetooth&&disown"
+                                    :icon "${pollerBluetooth}"
+                                )
+                        )
+                        (box
+                            :orientation "horizontal"
+                            :class "layoutboxGenericOpaque"
+                                (statusRollupButton
+                                    :margins "4 4 4 8"
+                                    :tt "Do not Disturb"
+                                    :action "echo placeholder"
+                                    :icon "󰍷"
+                                )
+                                (statusRollupButton
+                                    :margins "4 8 4 4"
+                                    :tt "Change theme"
+                                    :action "echo placeholder"
+                                    :icon "󱎖"
+                                )
+                        )
+                        (label 
+                            :markup "Hey there <b>${internalUname}</b>."
+                        )
+                )
+        )
     )
 )
 
 (defwidget dockdynamic_layout []
-    (box
-        :class "boxGeneric"
-            (overlay
-                (graph
-                    :value "${round(EWW_CPU["avg"], 0)}"
+    (overlay
+        (box
+            :class "boxGeneric"
+        )
+        (box
+            :class "boxGenericOpaque"
+                (overlay
+                    (graph
+                        :value "${round(EWW_CPU["avg"], 0)}"
+                        :min 0
+                        :max 100
+                        :time-range "10s"
+                        :line-style "round"
+                        :thickness 3
+                        :style "color: #0ff;"
+                    )
+                    (graph
+                        :value "${round(EWW_RAM["used_mem"]/107374100, 0)}"
+                        :min 0
+                        :max 80
+                        :time-range "10s"
+                        :line-style "round"
+                        :thickness 3
+                        :style "color: #f00;"
+                    )
+                )
+                (label
+                    :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
+                    :wrap true
+                )
+                (scale
+                    :class "testBar"
+                    :draw-value true
                     :min 0
                     :max 100
-                    :time-range "10s"
-                    :line-style "round"
-                    :thickness 3
-                    :style "color: #0ff;"
+                    :orientation "h"
                 )
-                (graph
-                    :value "${round(EWW_RAM["used_mem"]/107374100, 0)}"
-                    :min 0
-                    :max 80
-                    :time-range "10s"
-                    :line-style "round"
-                    :thickness 3
-                    :style "color: #f00;"
-                )
-            )
-            (label
-                :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
-                :wrap true
-            )
-            (scale
-                :class "testBar"
-                :draw-value true
-                :min 0
-                :max 100
-                :orientation "h"
-            )
+        )
     )
 )
 
@@ -180,9 +219,7 @@
 
 (defwidget callAppRight []
     (box
-        :class "appBoxGeneric"
-        :vexpand false
-        :hexpand false
+        :class "appboxGenericOpaque"
             (button 
                 :class "appIconGeneric"
                 :onclick "google-chrome-stable&&disown"
@@ -193,9 +230,7 @@
 
 (defwidget callAppLeft []
     (box
-        :class "appBoxGeneric"
-        :vexpand false
-        :hexpand false
+        :class "appboxGenericOpaque"
             (button
                 :class "appIconGeneric"
                 :onclick "cutefish-terminal&&disown"
@@ -206,9 +241,7 @@
 
 (defwidget callDashboard []
     (box
-        :class "appBoxGeneric"
-        :vexpand false
-        :hexpand false
+        :class "appboxGenericOpaque"
             (eventbox
                 :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; fi"
                     (image 
@@ -223,43 +256,16 @@
 
 ;; ;; end main dock
 
-;; ;; dynamic dock
-
-(defwidget timeDate []
-    (box
-        :class "textBoxGeneric"
-        :vexpand false
-        :hexpand false
-        :orientation "vertical"
-        :spacing -15
-            (label 
-                :class "textNormalGeneric"
-                :text "${pollerTime}"
-            )
-            (label
-                :class "textSubnormalGeneric"
-                :text "${pollerDate}"
-            )
-    )
-)
-
-;; ;; end dynamic dock
-
 ;; ;; status dock
 
 (defwidget statusGenericIcon [tt action icon]
     (box
-        :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
-            (eventbox
-                :cursor "pointer"
-                    (button 
-                        :tooltip "${tt}"
-                        :class "iconSmallGeneric"
-                        :onclick "${action}"
-                        "${icon}"
-                    )
+        :class "iconboxGenericOpaque"
+            (button 
+                :tooltip "${tt}"
+                :class "iconSmallGeneric"
+                :onclick "${action}"
+                "${icon}"
             )
     )
 )
@@ -271,8 +277,6 @@
 (defwidget statusRollupButton [margins tt action icon ?acc]
     (box
         :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
         :style "margin: ${margins};"
             (eventbox
                 :cursor "pointer"
@@ -294,8 +298,6 @@
 
 (defwidget mainrollupTopRow [] ;; used for 3 top widgets // todo: color
     (box
-        :vexpand false
-        :hexpand false
         :orientation "horizontal"
             (mruTopLeftSection)
             (mruTopMiddleSection)
@@ -305,8 +307,6 @@
 
 (defwidget mruTopLeftSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "left section layout"
             )
@@ -315,8 +315,6 @@
 
 (defwidget mruTopMiddleSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "middle section layout"
             )
@@ -325,8 +323,6 @@
 
 (defwidget mruTopRightSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "right section layout"
             )
@@ -339,8 +335,6 @@
 
 (defwidget mainrollupMiddleRow []
     (box
-        :vexpand false
-        :hexpand false
             (mruMiddleLeftSection)
             (mruMiddleMiddleSection)
             (mruMiddleRightSection)
@@ -349,8 +343,6 @@
 
 (defwidget mruMiddleLeftSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "apps 1 left"
             )
@@ -359,8 +351,6 @@
 
 (defwidget mruMiddleMiddleSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "apps 2 right"
             )
@@ -369,8 +359,6 @@
 
 (defwidget mruMiddleRightSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "pick up where you left off space"
             )
@@ -383,8 +371,6 @@
 
 (defwidget mainrollupBottomRow []
     (box
-        :vexpand false
-        :hexpand false
             (mruBottomLeftSection)
             (mruBottomMiddleSection)
             (mruBottomRightSection)
@@ -393,8 +379,6 @@
 
 (defwidget mruBottomLeftSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "arrangements 1"
             )
@@ -403,8 +387,6 @@
 
 (defwidget mruBottomMiddleSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "arrangements 2"
             )
@@ -413,8 +395,6 @@
 
 (defwidget mruBottomRightSection []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :text "extras"
             )
@@ -427,8 +407,6 @@
 
 (defwidget mainrollupSubRow []
     (box
-        :vexpand false
-        :hexpand false
         :orientation "vertical"
             (mruSubSpacer)
             (mruSubSection)
@@ -441,8 +419,6 @@
 
 (defwidget mruSubSection []
     (box
-        :vexpand false
-        :hexpand false
         :orientation "horizontal"
             (mruSubProfile)
             (mruSubPowermenu)
@@ -452,8 +428,6 @@
 
 (defwidget mruSubProfile []
     (box
-        :vexpand false
-        :hexpand false
         :space-evenly false
         :spacing 5
             (box
@@ -469,8 +443,6 @@
 
 (defwidget mruSubPowermenu []
     (box
-        :vexpand false
-        :hexpand false
             (mruSubPowermenuButton 
                 :action "cutefish-settings&&disown" 
                 :icon "󰒓"
@@ -490,8 +462,6 @@
 
 (defwidget mruSubPowermenuButton [icon action]
     (box
-        :vexpand false
-        :hexpand false
             (eventbox
                 :cursor "pointer"
                     (button 
@@ -508,8 +478,6 @@
 
 (defwidget mruSubDrivespace []
     (box
-        :vexpand false
-        :hexpand false
             (label 
                 :class "textNormalGeneric" 
                 :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
