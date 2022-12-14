@@ -2,15 +2,9 @@
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
-;; define variables
-
 (defvar volumePercentage 0)
 
-(defvar ewwCmd "eww -c /etc/avdanos/dock")
-
 (defvar dockstatusRollupBool false)
-
-;; list pollers
 
 (defpoll pollerTime :interval "1s"
     'date +%H:%M '
@@ -20,7 +14,7 @@
     'date "+%A, %B %d"'
 )
 
-(defpoll pollerVolume :interval "1s"
+(defpoll pollerVolume :interval "3s"
     'sh ./scripts/grabvolume.sh'
 )
 
@@ -40,12 +34,6 @@
     'whoami'
 )
 
-;; end pollers
-
-
-
-;; list windows
-
 (defwindow dockdynamic
     :windowtype "dock"
     :geometry (geometry
@@ -56,7 +44,6 @@
                 :anchor "bottom center")
     (dockdynamic_layout)
 )
-
 
 (defwindow dockmain
     :windowtype "dock"
@@ -70,7 +57,6 @@
     (dockmain_layout)
 )
 
-
 (defwindow dockstatic
     :windowtype "dock"
     :geometry (geometry
@@ -81,7 +67,6 @@
                 :anchor "bottom center")
     (dockstatic_layout)
 )
-
 
 (defwindow dockstatus
     :windowtype "dock"
@@ -105,12 +90,6 @@
     (dockstatus_rollup_layout)
 )
 
-;; end windows
-
-
-
-;; def layouts
-
 (defwidget dockmain_layout []
     (box
         :orientation "horizontal"
@@ -125,7 +104,21 @@
     (box
         :orientation "horizontal"
         :class "boxGeneric"
-            (timeDate)
+                (box
+                    :class "textBoxGeneric"
+                    :orientation "vertical"
+                        (label 
+                            :class "textNormalGeneric"
+                            :text "${pollerTime}"
+                            :valign "end"
+                        )
+                        (label
+                            :class "textSubnormalGeneric"
+                            :text "${pollerDate}"
+                            :valign "start"
+                        )
+                )
+            
     )
 )
 
@@ -171,8 +164,6 @@
 
 (defwidget dockdynamic_layout []
     (box
-        :hexpand false
-        :vexpand false
         :class "boxGeneric"
             (label 
                 :markup "${pollerTheme} <b>AvdanDOE</b>: <span font_family='monospace'>DevPre1</span> on <span font_family='monospace'>DOEBox v1lune</span> 󰌾 "
@@ -180,19 +171,9 @@
     )
 )
 
-;; end layouts
-
-
-
-;; def microwidgets
-
-;; ;; main dock
-
 (defwidget callAppRight []
     (box
         :class "appBoxGeneric"
-        :vexpand false
-        :hexpand false
             (button 
                 :class "appIconGeneric"
                 :onclick "google-chrome-stable&&disown"
@@ -204,8 +185,6 @@
 (defwidget callAppLeft []
     (box
         :class "appBoxGeneric"
-        :vexpand false
-        :hexpand false
             (button
                 :class "appIconGeneric"
                 :onclick "cutefish-terminal&&disown"
@@ -217,8 +196,6 @@
 (defwidget callDashboard []
     (box
         :class "appBoxGeneric"
-        :vexpand false
-        :hexpand false
             (eventbox
                 :onclick "cutefish-launcher&&disown"
                     (image 
@@ -231,37 +208,9 @@
     )
 )
 
-;; ;; end main dock
-
-;; ;; dynamic dock
-
-(defwidget timeDate []
-    (box
-        :class "textBoxGeneric"
-        :vexpand false
-        :hexpand false
-        :orientation "vertical"
-        :spacing -15
-            (label 
-                :class "textNormalGeneric"
-                :text "${pollerTime}"
-            )
-            (label
-                :class "textSubnormalGeneric"
-                :text "${pollerDate}"
-            )
-    )
-)
-
-;; ;; end dynamic dock
-
-;; ;; status dock
-
 (defwidget iconWifi []
     (box
         :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
             (button
                 :tooltip "Wi-Fi" 
                 :class "iconSmallGeneric" 
@@ -274,8 +223,6 @@
 (defwidget iconBluetooth []
     (box
         :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
             (button 
                 :tooltip "Bluetooth" 
                 :class "iconSmallGeneric" 
@@ -287,12 +234,10 @@
 
 (defwidget iconVolume []
     (eventbox
-        :onhover "${ewwCmd} update volumePercentage=$(pamixer --get-volume)"
+        :onhover "${EWW_CMD} update volumePercentage=$(pamixer --get-volume)"
         :onscroll "sh ./scripts/setvolume.sh {}"
             (box
                 :class "iconBoxGeneric"
-                :vexpand false
-                :hexpand false
                     (button 
                         :tooltip "Volume: ${volumePercentage}%" 
                         :class "iconSmallGeneric" 
@@ -306,8 +251,6 @@
 (defwidget iconSettings []
     (box
         :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
             (button 
                 :tooltip "Settings" 
                 :class "iconSmallGeneric" 
@@ -320,26 +263,18 @@
 (defwidget iconExpand []
     (box
         :class "iconBoxGeneric"
-        :vexpand false
-        :hexpand false
             (button 
                 :tooltip "Expand rollup" 
                 :class "iconSmallGeneric" 
-                :onclick "if [ `${ewwCmd} get dockstatusRollupBool` == 'false' ]; then ${ewwCmd} open dockstatus_rollup && ${ewwCmd} update dockstatusRollupBool=true; else ${ewwCmd} update dockstatusRollupBool=false; sleep 0.1; ${ewwCmd} close dockstatus_rollup; fi"
+                :onclick "if [ `${EWW_CMD} get dockstatusRollupBool` == 'false' ]; then ${EWW_CMD} open dockstatus_rollup && ${EWW_CMD} update dockstatusRollupBool=true; else ${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; fi"
                 "󰾍"
             )
     )
 )
 
-;; ;; end status dock
-
-;; ;; status dock rollup
-
 (defwidget buttonWifi []
     (box
         :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
         :style "margin: 8 4 4 8;"
             (button
                 :tooltip "Wi-Fi"
@@ -353,8 +288,6 @@
 (defwidget buttonBluetooth []
     (box
         :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
         :style "margin: 8 8 4 4;"
             (button
                 :tooltip "Bluetooth" 
@@ -368,8 +301,6 @@
 (defwidget buttonDND []
     (box
         :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
         :style "margin: 4 4 4 8;"
             (button
                 :tooltip "Do not Disturb"
@@ -383,8 +314,6 @@
 (defwidget buttonThemeToggle []
     (box
         :class "buttonBoxRollup"
-        :vexpand false
-        :hexpand false
         :style "margin: 4 8 4 4;"
             (button
                 :tooltip "Appearance"
@@ -394,5 +323,3 @@
             )
     )
 )
-
-;; end microwidgets
