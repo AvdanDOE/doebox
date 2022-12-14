@@ -414,7 +414,7 @@
 )
 
 (defwidget mruSubSpacer []
-    (box)
+    (box :style "background-color: #a00;")
 )
 
 (defwidget mruSubSection []
@@ -434,7 +434,7 @@
                 :class "roundedProfileImage"
             )
             (label
-                :xalign 0
+                :halign "start"
                 :text "${internalUname}"
             )
             (label :text "")
@@ -443,6 +443,7 @@
 
 (defwidget mruSubPowermenu []
     (box
+        :style "background-color: #aaa;"
             (mruSubPowermenuButton 
                 :action "cutefish-settings&&disown" 
                 :icon "󰒓"
