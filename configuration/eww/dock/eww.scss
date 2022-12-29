@@ -51,16 +51,16 @@ $accent: #4155CC;
 
 scale trough{
     all: unset;
-    background-color: #335555;
-    border-radius: 12px;
+    background-color: #111;
+    border-radius: 8px;
     min-height: 20px;
-    min-width: 10px;
-    margin: .3rem 0 .3rem 0;
+    min-width: 120px;
+    margin: 0 8px 0 8px;
 }
 
 .testBar trough highlight{
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 .roundedProfileImage{
