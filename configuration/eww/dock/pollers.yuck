@@ -31,6 +31,11 @@
     'sh ./scripts/grabwifi.sh'
 )
 
+(defpoll isMute
+    :interval "1s"
+    'pamixer --get-mute'
+)
+
 (defpoll pollerTheme 
     :interval "7200s"
     'sh ./scripts/settheme.sh'
