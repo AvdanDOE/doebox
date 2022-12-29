@@ -161,8 +161,25 @@
                                     :icon "󱎖"
                                 )
                         )
-                        (label 
-                            :markup "Hey there <b>${internalUname}</b>."
+                        (box
+                            :space-evenly false
+                                (button 
+                                    :onclick "pamixer --toggle-mute & ${EWW_CMD} update isMute=`pamixer --get-mute`"
+                                    :halign "end"
+                                    :style "margin: 0 0 0 8px;"
+                                    :class "iconGeneric"
+                                    {isMute ? "󰖁" : "󰕾"} 
+                                )
+                                (scale
+                                    :class "testBar"
+                                    :min 0
+                                    :max 101
+                                    :orientation "h"
+                                    :hexpand true
+                                    :onchange "pamixer --set-volume {}"
+                                    :round-digits 0
+                                    :value volumePercentage
+                                )
                         )
                 )
         )
@@ -199,13 +216,6 @@
                 (label
                     :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
                     :wrap true
-                )
-                (scale
-                    :class "testBar"
-                    :draw-value true
-                    :min 0
-                    :max 100
-                    :orientation "h"
                 )
         )
     )
@@ -414,7 +424,7 @@
 )
 
 (defwidget mruSubSpacer []
-    (box :style "background-color: #a00;")
+    (box)
 )
 
 (defwidget mruSubSection []
@@ -443,7 +453,6 @@
 
 (defwidget mruSubPowermenu []
     (box
-        :style "background-color: #aaa;"
             (mruSubPowermenuButton 
                 :action "cutefish-settings&&disown" 
                 :icon "󰒓"
