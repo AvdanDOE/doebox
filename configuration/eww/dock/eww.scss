@@ -49,18 +49,35 @@ $accent: #4155CC;
     font-weight: normal;
 }
 
-scale trough{
+.volumeBar, .diskBar, scale trough{
     all: unset;
     background-color: #111;
     border-radius: 8px;
+}
+
+.volumeBar trough{
     min-height: 20px;
     min-width: 120px;
     margin: 0 8px 0 8px;
 }
 
-.testBar trough highlight{
-    background-color: #fff;
+.diskBar trough{
+    min-height: 8px;
+    min-width: 20px;
+    margin: 0 70px 0 70px;
+}
+
+.volumeBar, .diskBar, scale trough highlight{
+    all: unset;
     border-radius: 8px;
+}
+
+.volumeBar trough highlight{
+    background-color: #fff;
+}
+
+.diskBar trough highlight{
+    background-color: #fff;
 }
 
 .roundedProfileImage{
