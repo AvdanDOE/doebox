@@ -492,6 +492,7 @@
             (label 
                 :class "textSubnormalGeneric" 
                 :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
+                :valign "baseline"
             )
             (scale
                 :class "diskBar"
