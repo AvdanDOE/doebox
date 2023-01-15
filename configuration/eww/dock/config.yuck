@@ -1,5 +1,0 @@
-;; doebox/dock v1lune
-;; based on eww
-;; for licensing and info refer to avdandoe/doebox
-
-;;(defvar ewwCmd "eww -c ~/Documents/CodeProjects/doebox/configuration/eww/dock") deprecated
