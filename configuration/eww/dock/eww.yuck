@@ -191,7 +191,8 @@
             :class "boxGenericOpaque"
                 (overlay
                     (label
-                        :text "avdandoe_v1lune 󰍁"
+                        :text "avdandoe_v1lune-dp2 󰍁"
+                        :style "font-size: 14px;"
                     )
             )
         )
