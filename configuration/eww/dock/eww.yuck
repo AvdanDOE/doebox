@@ -151,13 +151,13 @@
                                 (statusRollupButton
                                     :margins "4 4 4 8"
                                     :tt "Do not Disturb"
-                                    :action "echo placeholder"
+                                    :action "cutefish-settings -m notifications&&disown"
                                     :icon "󰍷"
                                 )
                                 (statusRollupButton
                                     :margins "4 8 4 4"
                                     :tt "Change theme"
-                                    :action "echo placeholder"
+                                    :action "cutefish-settings -m appearance&&disown"
                                     :icon "󱎖"
                                 )
                         )
@@ -194,29 +194,11 @@
         (box
             :class "boxGenericOpaque"
                 (overlay
-                    (graph
-                        :value "${round(EWW_CPU["avg"], 0)}"
-                        :min 0
-                        :max 100
-                        :time-range "10s"
-                        :line-style "round"
-                        :thickness 3
-                        :style "color: #0ff;"
+                    (label
+                        :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
+                        :wrap false
                     )
-                    (graph
-                        :value "${round(EWW_RAM["used_mem"]/107374100, 0)}"
-                        :min 0
-                        :max 80
-                        :time-range "10s"
-                        :line-style "round"
-                        :thickness 3
-                        :style "color: #f00;"
-                    )
-                )
-                (label
-                    :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
-                    :wrap true
-                )
+            )
         )
     )
 )
