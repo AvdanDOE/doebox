@@ -9,6 +9,7 @@
 (defvar volumePercentage 0)
 (defvar dockstatusRollupBool false)
 (defvar dockmainRollupBool false)
+(defvar calendarRollupBool false)
 
 (defwidget dockmain_layout []
     (overlay
@@ -55,10 +56,13 @@
                     :text "${pollerTime}"
                     :valign "end"
                 )
-                (label
-                    :style "font-size: ${16*(scaleFactor/100)}"
-                    :text "${pollerDate}"
-                    :valign "start"
+                (eventbox
+                    :onclick "if [ `${EWW_CMD} get calendarRollupBool` == 'false' ]; then ${EWW_CMD} open dockstatic_rollup && ${EWW_CMD} update calendarRollupBool=true; else ${EWW_CMD} update calendarRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatic_rollup; fi"
+                        (label
+                            :style "font-size: ${16*(scaleFactor/100)}"
+                            :text "${pollerDate}"
+                            :valign "start"
+                        )
                 )
         )
     )
@@ -196,14 +200,18 @@
         (box
             :class "boxGeneric"
         )
-        (calendar
-            :style "font-size: ${16*(scaleFactor/100)}"
-            :show-details false
-            :show-heading true
-            :show-day-names true
-            :day "${pollerDateDay}"
-            :month "${pollerDateMonth}"
-            :year "${pollerDateYear}"
+        (revealer
+            :transition "crossfade"
+            :reveal "${calendarRollupBool}"
+                (calendar
+                    :style "font-size: ${16*(scaleFactor/100)}"
+                    :show-details false
+                    :show-heading true
+                    :show-day-names true
+                    :day "${pollerDateDay}"
+                    :month "${pollerDateMonth}"
+                    :year "${pollerDateYear}"
+                )
         )
     )
 )
