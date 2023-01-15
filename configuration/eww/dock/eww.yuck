@@ -132,13 +132,13 @@
                                 (statusRollupButton
                                     :margins "8 4 4 8"
                                     :tt "Wi-Fi"
-                                    :action "cutefish-settings -m wifi&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m wifi&&disown"
                                     :icon "${pollerWifi}"
                                 )
                                 (statusRollupButton
                                     :margins "8 8 4 4"
                                     :tt "Bluetooth"
-                                    :action "cutefish-settings -m bluetooth&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m bluetooth&&disown"
                                     :icon "${pollerBluetooth}"
                                 )
                         )
@@ -148,13 +148,13 @@
                                 (statusRollupButton
                                     :margins "4 4 4 8"
                                     :tt "Do not Disturb"
-                                    :action "cutefish-settings -m notifications&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m notifications&&disown"
                                     :icon "󰍷"
                                 )
                                 (statusRollupButton
                                     :margins "4 8 4 4"
                                     :tt "Change theme"
-                                    :action "cutefish-settings -m appearance&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m appearance&&disown"
                                     :icon "󱎖"
                                 )
                         )
