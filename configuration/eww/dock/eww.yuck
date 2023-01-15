@@ -4,7 +4,6 @@
 
 ;; include
 
-; (include "./config.yuck")
 (include "./pollers.yuck")
 (include "./windows.yuck")
 
@@ -208,10 +207,14 @@
 (defwidget callAppRight []
     (box
         :class "appboxGenericOpaque"
-            (button 
-                :class "appIconGeneric"
-                :onclick "google-chrome-stable&&disown"
-                "󰊯"
+            (eventbox
+                :cursor "pointer"
+                    (button 
+                        :class "appIconGeneric"
+                        :onclick "xdotool keydown alt key Tab; sleep 2; xdotool keyup alt"
+                        :timeout "4s"
+                        "󱟲"
+                    )
             )
     )
 )
@@ -219,10 +222,13 @@
 (defwidget callAppLeft []
     (box
         :class "appboxGenericOpaque"
-            (button
-                :class "appIconGeneric"
-                :onclick "cutefish-terminal&&disown"
-                "󰆍"
+            (eventbox
+                :cursor "pointer"
+                    (button
+                        :class "appIconGeneric"
+                        :onclick "cutefish-terminal&&disown"
+                        "󰆍"
+                    )
             )
     )
 )
@@ -232,6 +238,7 @@
         :class "appboxGenericOpaque"
             (eventbox
                 :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; fi"
+                :cursor "pointer"
                     (image 
                         :class "appImageGeneric"
                         :path "../globalassets/avlogo.svg" 
