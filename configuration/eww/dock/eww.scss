@@ -6,10 +6,8 @@ $bgc: #1c1c1d;
 $fgc: #fff;
 $accent: #4155CC;
 
-// unset gtk design, set font
 * { all: unset; font-family: HarmonyOS Sans; }
 
-// generic dock window design
 .boxGeneric {
     background-color: $bgc;
     border-radius: 8px;

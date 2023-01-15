@@ -2,10 +2,8 @@
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
-;; list windows
-
 (defwindow dockdynamic
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "-23%"
                 :y "-1%"
@@ -15,9 +13,8 @@
     (dockdynamic_layout)
 )
 
-
 (defwindow dockmain
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "0%"
                 :y "-1%"
@@ -28,9 +25,8 @@
     (dockmain_layout)
 )
 
-
 (defwindow dockstatic
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "15%"
                 :y "-1%"
@@ -40,9 +36,8 @@
     (dockstatic_layout)
 )
 
-
 (defwindow dockstatus
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "32%"
                 :y "-1%"
@@ -53,7 +48,7 @@
 )
 
 (defwindow dockstatus_rollup
-    :windowtype "normal"
+    :windowtype "dock"
     :geometry (geometry
                 :x "32%"
                 :y "-9%"
@@ -64,7 +59,7 @@
 )
 
 (defwindow dockmain_rollup
-    :windowtype "normal" ;; assign dock on debug end
+    :windowtype "dock"
     :geometry (geometry
                 :x "0%"
                 :y "-9%"
@@ -73,5 +68,3 @@
                 :anchor "bottom center")
     (dockmain_rollup_layout)
 )
-
-;; end windows

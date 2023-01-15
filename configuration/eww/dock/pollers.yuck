@@ -2,8 +2,6 @@
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
-;; list pollers
-
 (defpoll pollerTime 
     :interval "1s"
     'date +%H:%M '
@@ -45,4 +43,3 @@
     :interval "7200s"
     'whoami'
 )
-;; end pollers

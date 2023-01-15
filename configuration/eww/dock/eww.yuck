@@ -2,19 +2,13 @@
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
-;; include
-
 (include "./pollers.yuck")
 (include "./windows.yuck")
 (include "./props.yuck")
 
-;; define variables
-
 (defvar volumePercentage 0)
 (defvar dockstatusRollupBool false)
 (defvar dockmainRollupBool false)
-
-;; def layouts
 
 (defwidget dockmain_layout []
     (overlay
@@ -162,7 +156,6 @@
                                     :onclick "pamixer --toggle-mute & ${EWW_CMD} update isMute=`pamixer --get-mute`"
                                     :halign "end"
                                     :style "margin: 0 0 0 8px; font-size: ${24*(scaleFactor/100)}"
-                                    ;;:class "iconGeneric"
                                     {isMute ? "󰖁" : "󰕾"} 
                                 )
                                 (scale
@@ -198,19 +191,12 @@
     )
 )
 
-;; end layouts
-
-;; def microwidgets
-
-;; ;; main dock
-
 (defwidget callAppRight []
     (box
         :class "appboxGenericOpaque"
             (eventbox
                 :cursor "pointer"
                     (button 
-                        ;:class "appIconGeneric"
                         :style "font-size: ${32*(scaleFactor/100)}"
                         :onclick "xdotool keydown alt key Tab; sleep 2; xdotool keyup alt"
                         :timeout "4s"
@@ -226,7 +212,6 @@
             (eventbox
                 :cursor "pointer"
                     (button
-                        ;:class "appIconGeneric"
                         :style "font-size: ${32*(scaleFactor/100)}"
                         :onclick "cutefish-terminal&&disown"
                         "󰆍"
@@ -242,7 +227,6 @@
                 :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; fi"
                 :cursor "pointer"
                     (image 
-                        ;:class "appImageGeneric"
                         :style "font-size: ${32*(scaleFactor/100)}"
                         :path "../globalassets/avlogo.svg" 
                         :image-width "${32*(scaleFactor/100)}"
@@ -251,26 +235,17 @@
     )
 )
 
-;; ;; end main dock
-
-;; ;; status dock
-
 (defwidget statusGenericIcon [tt action icon]
     (box
         :class "iconboxGenericOpaque"
             (button 
                 :tooltip "${tt}"
-                ;;:class "iconSmallGeneric"
                 :style "font-size: ${20*(scaleFactor/100)}"
                 :onclick "${action}"
                 "${icon}"
             )
     )
 )
-
-;; ;; end status dock
-
-;; ;; status dock rollup
 
 (defwidget statusRollupButton [margins tt action icon ?acc]
     (box
@@ -280,7 +255,6 @@
                 :cursor "pointer"
                     (button
                         :tooltip "${tt}"
-                        ;;:class "iconGeneric"
                         :style "font-size: ${24*(scaleFactor/100)}"
                         :onclick "${action}"
                         "${icon}"
@@ -288,12 +262,6 @@
             )
     )
 )
-
-;; ;; end status dock rollup
-
-;; ;; begin main rollup
-
-;; ;; ;; BEGIN SUBSECTION
 
 (defwidget mruSubSection []
     (box
@@ -337,8 +305,6 @@
     )
 )
 
-;; ;; ;; ;; buttons for subpowermenu
-
 (defwidget mruSubButton [icon action]
     (box
         (eventbox
@@ -353,13 +319,10 @@
     )
 )
 
-;; ;; ;; ;; end buttons for subpowermenu
-
 (defwidget mruSubDrivespace []
     (box
         :orientation "vertical"
             (label 
-                ;:class "textSubnormalGeneric" 
                 :style "font-size: ${16*(scaleFactor/100)}"
                 :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
                 :valign "end"
@@ -373,7 +336,3 @@
             )
     )
 )
-
-;; ;; ;; END SUBSECTION
-
-;; end microwidgets
