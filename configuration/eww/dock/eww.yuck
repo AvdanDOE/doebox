@@ -317,6 +317,7 @@
             (label
                 :halign "start"
                 :text "${internalUname}"
+                :style "font-size: ${16*(logoScale/100)}"
             )
             (label :text "")
     )
