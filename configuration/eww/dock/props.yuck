@@ -1,1 +1,1 @@
-(defvar scaleFactor 100)
+(defvar scaleFactor 100.000000)
