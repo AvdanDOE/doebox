@@ -192,8 +192,7 @@
             :class "boxGenericOpaque"
                 (overlay
                     (label
-                        :text "CPU: ${round(EWW_CPU["avg"], 0)}%; RAM: ${round(EWW_RAM["used_mem"]/1073741824, 2)} GiB/${round(EWW_RAM["total_mem"]/1073741824, 2)} GiB avdandoe_v1lune 󰍁"
-                        :wrap false
+                        :text "avdandoe_v1lune 󰍁"
                     )
             )
         )
