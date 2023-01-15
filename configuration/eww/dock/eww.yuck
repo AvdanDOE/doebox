@@ -6,16 +6,13 @@
 
 (include "./pollers.yuck")
 (include "./windows.yuck")
+(include "./props.yuck")
 
 ;; define variables
 
 (defvar volumePercentage 0)
-
 (defvar dockstatusRollupBool false)
-
 (defvar dockmainRollupBool false)
-
-(defvar scaleFactor 100)
 
 ;; def layouts
 
