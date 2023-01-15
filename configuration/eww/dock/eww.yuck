@@ -15,7 +15,7 @@
 
 (defvar dockmainRollupBool false)
 
-(defvar logoScale 100)
+(defvar scaleFactor 100)
 
 ;; def layouts
 
@@ -60,12 +60,12 @@
             :class "boxGenericOpaque"
             :orientation "vertical"
                 (label
-                    :style "font-size: ${18*(logoScale/100)}"
+                    :style "font-size: ${18*(scaleFactor/100)}"
                     :text "${pollerTime}"
                     :valign "end"
                 )
                 (label
-                    :style "font-size: ${16*(logoScale/100)}"
+                    :style "font-size: ${16*(scaleFactor/100)}"
                     :text "${pollerDate}"
                     :valign "start"
                 )
@@ -164,7 +164,7 @@
                                 (button 
                                     :onclick "pamixer --toggle-mute & ${EWW_CMD} update isMute=`pamixer --get-mute`"
                                     :halign "end"
-                                    :style "margin: 0 0 0 8px; font-size: ${24*(logoScale/100)}"
+                                    :style "margin: 0 0 0 8px; font-size: ${24*(scaleFactor/100)}"
                                     ;;:class "iconGeneric"
                                     {isMute ? "󰖁" : "󰕾"} 
                                 )
@@ -194,7 +194,7 @@
                 (overlay
                     (label
                         :text "avdandoe_v1lune-dp2 󰍁"
-                        :style "font-size: ${14*(logoScale/100)}"
+                        :style "font-size: ${14*(scaleFactor/100)}"
                     )
             )
         )
@@ -214,7 +214,7 @@
                 :cursor "pointer"
                     (button 
                         ;:class "appIconGeneric"
-                        :style "font-size: ${32*(logoScale/100)}"
+                        :style "font-size: ${32*(scaleFactor/100)}"
                         :onclick "xdotool keydown alt key Tab; sleep 2; xdotool keyup alt"
                         :timeout "4s"
                         "󱟲"
@@ -230,7 +230,7 @@
                 :cursor "pointer"
                     (button
                         ;:class "appIconGeneric"
-                        :style "font-size: ${32*(logoScale/100)}"
+                        :style "font-size: ${32*(scaleFactor/100)}"
                         :onclick "cutefish-terminal&&disown"
                         "󰆍"
                     )
@@ -246,9 +246,9 @@
                 :cursor "pointer"
                     (image 
                         ;:class "appImageGeneric"
-                        :style "font-size: ${32*(logoScale/100)}"
+                        :style "font-size: ${32*(scaleFactor/100)}"
                         :path "../globalassets/avlogo.svg" 
-                        :image-width "${32*(logoScale/100)}"
+                        :image-width "${32*(scaleFactor/100)}"
                     )
             )
     )
@@ -264,7 +264,7 @@
             (button 
                 :tooltip "${tt}"
                 ;;:class "iconSmallGeneric"
-                :style "font-size: ${20*(logoScale/100)}"
+                :style "font-size: ${20*(scaleFactor/100)}"
                 :onclick "${action}"
                 "${icon}"
             )
@@ -284,7 +284,7 @@
                     (button
                         :tooltip "${tt}"
                         ;;:class "iconGeneric"
-                        :style "font-size: ${24*(logoScale/100)}"
+                        :style "font-size: ${24*(scaleFactor/100)}"
                         :onclick "${action}"
                         "${icon}"
                     )
@@ -317,7 +317,7 @@
             (label
                 :halign "start"
                 :text "${internalUname}"
-                :style "font-size: ${16*(logoScale/100)}"
+                :style "font-size: ${16*(scaleFactor/100)}"
             )
             (label :text "")
     )
@@ -348,7 +348,7 @@
             :cursor "pointer"
                 (button 
                     ;:class "iconGeneric"
-                    :style "font-size: ${24*(logoScale/100)}"
+                    :style "font-size: ${24*(scaleFactor/100)}"
                     :onclick "${action}" 
                     "${icon}"
                 )
@@ -363,7 +363,7 @@
         :orientation "vertical"
             (label 
                 ;:class "textSubnormalGeneric" 
-                :style "font-size: ${16*(logoScale/100)}"
+                :style "font-size: ${16*(scaleFactor/100)}"
                 :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
                 :valign "end"
             )
