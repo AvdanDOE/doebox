@@ -15,6 +15,8 @@
 
 (defvar dockmainRollupBool false)
 
+(defvar logoScale 100)
+
 ;; def layouts
 
 (defwidget dockmain_layout []
@@ -58,12 +60,12 @@
             :class "boxGenericOpaque"
             :orientation "vertical"
                 (label
-                    :class "textNormalGeneric"
+                    :style "font-size: ${18*(logoScale/100)}"
                     :text "${pollerTime}"
                     :valign "end"
                 )
                 (label
-                    :class "textSubnormalGeneric"
+                    :style "font-size: ${16*(logoScale/100)}"
                     :text "${pollerDate}"
                     :valign "start"
                 )
@@ -162,8 +164,8 @@
                                 (button 
                                     :onclick "pamixer --toggle-mute & ${EWW_CMD} update isMute=`pamixer --get-mute`"
                                     :halign "end"
-                                    :style "margin: 0 0 0 8px;"
-                                    :class "iconGeneric"
+                                    :style "margin: 0 0 0 8px; font-size: ${24*(logoScale/100)}"
+                                    ;;:class "iconGeneric"
                                     {isMute ? "󰖁" : "󰕾"} 
                                 )
                                 (scale
@@ -192,7 +194,7 @@
                 (overlay
                     (label
                         :text "avdandoe_v1lune-dp2 󰍁"
-                        :style "font-size: 14px;"
+                        :style "font-size: ${14*(logoScale/100)}"
                     )
             )
         )
@@ -211,7 +213,8 @@
             (eventbox
                 :cursor "pointer"
                     (button 
-                        :class "appIconGeneric"
+                        ;:class "appIconGeneric"
+                        :style "font-size: ${32*(logoScale/100)}"
                         :onclick "xdotool keydown alt key Tab; sleep 2; xdotool keyup alt"
                         :timeout "4s"
                         "󱟲"
@@ -226,7 +229,8 @@
             (eventbox
                 :cursor "pointer"
                     (button
-                        :class "appIconGeneric"
+                        ;:class "appIconGeneric"
+                        :style "font-size: ${32*(logoScale/100)}"
                         :onclick "cutefish-terminal&&disown"
                         "󰆍"
                     )
@@ -241,9 +245,10 @@
                 :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; fi"
                 :cursor "pointer"
                     (image 
-                        :class "appImageGeneric"
+                        ;:class "appImageGeneric"
+                        :style "font-size: ${32*(logoScale/100)}"
                         :path "../globalassets/avlogo.svg" 
-                        :image-width 32
+                        :image-width "${32*(logoScale/100)}"
                     )
             )
     )
@@ -258,7 +263,8 @@
         :class "iconboxGenericOpaque"
             (button 
                 :tooltip "${tt}"
-                :class "iconSmallGeneric"
+                ;;:class "iconSmallGeneric"
+                :style "font-size: ${20*(logoScale/100)}"
                 :onclick "${action}"
                 "${icon}"
             )
@@ -277,7 +283,8 @@
                 :cursor "pointer"
                     (button
                         :tooltip "${tt}"
-                        :class "iconGeneric"
+                        ;;:class "iconGeneric"
+                        :style "font-size: ${24*(logoScale/100)}"
                         :onclick "${action}"
                         "${icon}"
                     )
@@ -339,7 +346,8 @@
         (eventbox
             :cursor "pointer"
                 (button 
-                    :class "iconGeneric"
+                    ;:class "iconGeneric"
+                    :style "font-size: ${24*(logoScale/100)}"
                     :onclick "${action}" 
                     "${icon}"
                 )
@@ -353,7 +361,8 @@
     (box
         :orientation "vertical"
             (label 
-                :class "textSubnormalGeneric" 
+                ;:class "textSubnormalGeneric" 
+                :style "font-size: ${16*(logoScale/100)}"
                 :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
                 :valign "end"
             )
