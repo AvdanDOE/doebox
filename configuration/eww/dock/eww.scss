@@ -88,3 +88,23 @@ $accent: #4155CC;
     background-size: 45px 45px;
     margin: 10px 10px 10px 10px;
 }
+
+calendar.button{
+    color: $fgc
+}
+
+calendar:selected{
+    color: #4155CC
+}
+
+calendar.header{
+    color: $fgc
+}
+
+calendar.highlight{
+    color: $fgc
+}
+
+calendar:indeterminate{
+    color: #2c2c2d
+}

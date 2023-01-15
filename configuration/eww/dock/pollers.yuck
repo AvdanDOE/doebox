@@ -12,6 +12,21 @@
     'date "+%A, %B %d"'
 )
 
+(defpoll pollerDateMonth
+    :interval "1s"
+    'date "+%B"'
+)
+
+(defpoll pollerDateDay
+    :interval "1s"
+    'date "+%d"'
+)
+
+(defpoll pollerDateYear
+    :interval "1s"
+    'date "+%Y"'
+)
+
 (defpoll pollerVolume 
     :interval "60s"
     'sh ./scripts/grabvolume.sh'

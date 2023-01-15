@@ -3,7 +3,7 @@
 ;; for licensing and info refer to avdandoe/doebox
 
 (defwindow dockdynamic
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "-23%"
                 :y "-1%"
@@ -14,7 +14,7 @@
 )
 
 (defwindow dockmain
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "0%"
                 :y "-1%"
@@ -26,7 +26,7 @@
 )
 
 (defwindow dockstatic
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "15%"
                 :y "-1%"
@@ -37,7 +37,7 @@
 )
 
 (defwindow dockstatus
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "32%"
                 :y "-1%"
@@ -48,7 +48,7 @@
 )
 
 (defwindow dockstatus_rollup
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "32%"
                 :y "-9%"
@@ -59,7 +59,7 @@
 )
 
 (defwindow dockmain_rollup
-    :windowtype "dock"
+    :windowtype "normal"
     :geometry (geometry
                 :x "0%"
                 :y "-9%"
@@ -67,4 +67,15 @@
                 :height "6%"
                 :anchor "bottom center")
     (dockmain_rollup_layout)
+)
+
+(defwindow dockstatic_rollup
+    :windowtype "normal"
+    :geometry (geometry
+                :x "15%"
+                :y "-9%"
+                :width "17%"
+                :height "18%"
+                :anchor "bottom center")
+    (dockstatic_rollup_layout)
 )

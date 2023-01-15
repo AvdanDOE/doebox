@@ -191,6 +191,23 @@
     )
 )
 
+(defwidget dockstatic_rollup_layout []
+    (overlay
+        (box
+            :class "boxGeneric"
+        )
+        (calendar
+            :style "font-size: ${16*(scaleFactor/100)}"
+            :show-details false
+            :show-heading true
+            :show-day-names true
+            :day "${pollerDateDay}"
+            :month "${pollerDateMonth}"
+            :year "${pollerDateYear}"
+        )
+    )
+)
+
 (defwidget callAppRight []
     (box
         :class "appboxGenericOpaque"
