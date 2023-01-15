@@ -44,9 +44,6 @@
                 (box
                     :orientation "vertical"
                     :class "boxGenericOpaque"
-                        (mainrollupTopRow)
-                        (mainrollupMiddleRow)
-                        (mainrollupBottomRow)
                         (mainrollupSubRow)
                 )
         )
@@ -285,115 +282,6 @@
 ;; ;; end status dock rollup
 
 ;; ;; begin main rollup
-
-;; ;; ;; TOP ROW
-
-(defwidget mainrollupTopRow [] ;; used for 3 top widgets // todo: color
-    (box
-        :orientation "horizontal"
-            (mruTopLeftSection)
-            (mruTopMiddleSection)
-            (mruTopRightSection)
-    )
-)
-
-(defwidget mruTopLeftSection []
-    (box
-            (label 
-                :text "left section layout"
-            )
-    )
-)
-
-(defwidget mruTopMiddleSection []
-    (box
-            (label 
-                :text "middle section layout"
-            )
-    )
-)
-
-(defwidget mruTopRightSection []
-    (box
-            (label 
-                :text "right section layout"
-            )
-    )
-)
-
-;; ;; ;; END TOP ROW
-
-;; ;; ;; BEGIN MIDDLE ROW
-
-(defwidget mainrollupMiddleRow []
-    (box
-            (mruMiddleLeftSection)
-            (mruMiddleMiddleSection)
-            (mruMiddleRightSection)
-    )
-)
-
-(defwidget mruMiddleLeftSection []
-    (box
-            (label 
-                :text "apps 1 left"
-            )
-    )
-)
-
-(defwidget mruMiddleMiddleSection []
-    (box
-            (label 
-                :text "apps 2 right"
-            )
-    )
-)
-
-(defwidget mruMiddleRightSection []
-    (box
-            (label 
-                :text "pick up where you left off space"
-            )
-    )
-)
-
-;; ;; ;; END MIDDLE SECTION
-
-;; ;; ;; BEGIN BOTTOM SECTION
-
-(defwidget mainrollupBottomRow []
-    (box
-            (mruBottomLeftSection)
-            (mruBottomMiddleSection)
-            (mruBottomRightSection)
-    )
-)
-
-(defwidget mruBottomLeftSection []
-    (box
-            (label 
-                :text "arrangements 1"
-            )
-    )
-)
-
-(defwidget mruBottomMiddleSection []
-    (box
-            (label 
-                :text "arrangements 2"
-            )
-    )
-)
-
-(defwidget mruBottomRightSection []
-    (box
-            (label 
-                :text "extras"
-            )
-    )
-)
-
-;; ;; ;; END BOTTOM SECTION
 
 ;; ;; ;; BEGIN SUBSECTION
 
