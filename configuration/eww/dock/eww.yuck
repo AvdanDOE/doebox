@@ -246,7 +246,6 @@
                         :image-width 32
                     )
             )
-
     )
 )
 
@@ -318,18 +317,18 @@
 
 (defwidget mruSubPowermenu []
     (box
-            (mruSubButton 
-                :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-settings&&disown" 
-                :icon "󰒓"
-            )
-            (mruSubButton 
-                :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-shutdown&&disown" 
-                :icon "󰐥"
-            )
-            (mruSubButton 
-                :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-launcher&&disown" 
-                :icon "󰀻"
-            )
+        (mruSubButton 
+            :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-settings&&disown" 
+            :icon "󰒓"
+        )
+        (mruSubButton 
+            :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-shutdown&&disown" 
+            :icon "󰐥"
+        )
+        (mruSubButton 
+            :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-launcher&&disown" 
+            :icon "󰀻"
+        )
     )
 )
 
@@ -337,15 +336,14 @@
 
 (defwidget mruSubButton [icon action]
     (box
-            (eventbox
-                :cursor "pointer"
-                    (button 
-                        :class "iconGeneric"
-                        :onclick "${action}" 
-                        "${icon}"
-                    )
-            )
-
+        (eventbox
+            :cursor "pointer"
+                (button 
+                    :class "iconGeneric"
+                    :onclick "${action}" 
+                    "${icon}"
+                )
+        )
     )
 )
 
