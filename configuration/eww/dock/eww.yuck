@@ -44,7 +44,7 @@
                 (box
                     :orientation "vertical"
                     :class "boxGenericOpaque"
-                        (mainrollupSubRow)
+                        (mruSubSection)
                 )
         )
     )
@@ -285,18 +285,6 @@
 
 ;; ;; ;; BEGIN SUBSECTION
 
-(defwidget mainrollupSubRow []
-    (box
-        :orientation "vertical"
-            (mruSubSpacer)
-            (mruSubSection)
-    )
-)
-
-(defwidget mruSubSpacer []
-    (box)
-)
-
 (defwidget mruSubSection []
     (box
         :orientation "horizontal"
@@ -323,16 +311,16 @@
 
 (defwidget mruSubPowermenu []
     (box
-            (mruSubPowermenuButton 
-                :action "cutefish-settings&&disown" 
+            (mruSubButton 
+                :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-settings&&disown" 
                 :icon "󰒓"
             )
-            (mruSubPowermenuButton 
-                :action "cutefish-shutdown&&disown" 
+            (mruSubButton 
+                :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-shutdown&&disown" 
                 :icon "󰐥"
             )
-            (mruSubPowermenuButton 
-                :action "echo placeholder" 
+            (mruSubButton 
+                :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-launcher&&disown" 
                 :icon "󰀻"
             )
     )
@@ -340,7 +328,7 @@
 
 ;; ;; ;; ;; buttons for subpowermenu
 
-(defwidget mruSubPowermenuButton [icon action]
+(defwidget mruSubButton [icon action]
     (box
             (eventbox
                 :cursor "pointer"
@@ -362,14 +350,14 @@
             (label 
                 :class "textSubnormalGeneric" 
                 :text "󰋊 ${round(EWW_DISK["/"].used/1073741824, 1)} GiB/${round(EWW_DISK["/"].total/1073741824, 1)} GiB"
-                :valign "baseline"
+                :valign "end"
             )
             (scale
                 :class "diskBar"
                 :value "${round(EWW_DISK["/"].used_perc, 0)}"
                 :orientation "h"
                 :active false
-                :valign "start"
+                :valign "center"
             )
     )
 )
