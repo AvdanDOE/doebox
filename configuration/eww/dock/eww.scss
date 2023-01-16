@@ -5,19 +5,22 @@
 $bgc: #1c1c1d;
 $sbg: #2c2c2d;
 $fgc: #fff;
-$accent: #4155CC;
+$accent: #4155cc;
+$dacct: darken($accent, 40%);
+$lacct: lighten($accent, 35%);
 
 // bgc: main background
 // sbg: secondary background
 // fgc: foreground
 // accent: self explanatory
+// saccent: secondary accent
 
 * { all: unset; font-family: HarmonyOS Sans; }
 
 .boxGeneric {
     background-color: $bgc;
     border-radius: 8px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .boxGenericOpaque {
@@ -26,9 +29,9 @@ $accent: #4155CC;
 }
 
 .buttonBoxRollup{
-    background-color: $fgc;
+    background-color: $dacct;
     border-radius: 8px;
-    color: $bgc;
+    color: $accent;
 }
 
 .appIconGeneric {
@@ -55,7 +58,7 @@ $accent: #4155CC;
 
 .volumeBar, .diskBar, scale trough{
     all: unset;
-    background-color: #2c2c2d;
+    background-color: $sbg;
     border-radius: 8px;
 }
 
@@ -96,21 +99,21 @@ $accent: #4155CC;
 }
 
 calendar.button{
-    color: $fgc
+    color: $fgc;
 }
 
 calendar:selected{
-    color: #4155CC
+    color: $accent;
 }
 
 calendar.header{
-    color: $fgc
+    color: $fgc;
 }
 
 calendar.highlight{
-    color: $fgc
+    color: $fgc;
 }
 
 calendar:indeterminate{
-    color: #2c2c2d
+    color: $sbg;
 }
