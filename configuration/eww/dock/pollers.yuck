@@ -14,7 +14,7 @@
 
 (defpoll pollerDateMonth
     :interval "1s"
-    'date "+%B"'
+    'date "+%m"'
 )
 
 (defpoll pollerDateDay
