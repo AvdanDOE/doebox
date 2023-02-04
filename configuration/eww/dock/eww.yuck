@@ -335,7 +335,6 @@
         (eventbox
             :cursor "pointer"
                 (button 
-                    ;:class "iconGeneric"
                     :style "font-size: ${24*(scaleFactor/100)}"
                     :onclick "${action}" 
                     "${icon}"
