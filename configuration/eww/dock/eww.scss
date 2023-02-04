@@ -29,8 +29,12 @@ $lacct: lighten($accent, 35%);
 }
 
 .buttonBoxRollup{
-    background-color: $sbg;
+    background-color: $dacct;
     border-radius: 8px;
+    color: $accent;
+}
+
+.buttonRollup{
     color: $accent;
 }
 
@@ -63,9 +67,15 @@ $lacct: lighten($accent, 35%);
 }
 
 .volumeBar trough{
-    min-height: 20px;
-    min-width: 120px;
-    margin: 0 8px 0 8px;
+    min-height: 50px;
+    min-width: 130px;
+    margin: 4 4 8 8;
+}
+
+.brightnessBar trough{
+    min-height: 50px;
+    min-width: 130px;
+    margin: 4 8 8 4;
 }
 
 .diskBar trough{
@@ -74,13 +84,13 @@ $lacct: lighten($accent, 35%);
     margin: 0 20px 0 20px;
 }
 
-.volumeBar, .diskBar, scale trough highlight{
+.volumeBar, .diskBar, .brightnessBar, scale trough highlight{
     all: unset;
     border-radius: 8px;
 }
 
 .volumeBar trough highlight{
-    background-color: #fff;
+    background-color: $dacct;
 }
 
 .diskBar trough highlight{
