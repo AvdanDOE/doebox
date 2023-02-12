@@ -29,13 +29,13 @@ $lacct: lighten($accent, 35%);
 }
 
 .buttonBoxRollup{
-    background-color: $dacct;
+    background-color: $accent;
     border-radius: 8px;
-    color: $accent;
+    color: $fgc;
 }
 
 .buttonRollup{
-    color: $accent;
+    color: $fgc;
 }
 
 .appIconGeneric {
@@ -90,7 +90,7 @@ $lacct: lighten($accent, 35%);
 }
 
 .volumeBar trough highlight{
-    background-color: $dacct;
+    background-color: $accent;
 }
 
 .diskBar trough highlight{
