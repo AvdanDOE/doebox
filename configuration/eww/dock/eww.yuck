@@ -6,7 +6,6 @@
 (include "./windows.yuck")
 (include "./props.yuck")
 
-(defvar volumePercentage 0)
 (defvar dockstatusRollupBool false)
 (defvar dockmainRollupBool false)
 (defvar calendarRollupBool false)
@@ -182,6 +181,7 @@
                                             :orientation "h"
                                             :round-digits 0
                                             :value volumePercentage
+                                            :onchange "pamixer --set-volume {}"
                                         )
                                         (label 
                                             :text "󰕾" 
@@ -193,10 +193,11 @@
                                         (scale
                                             :class "brightnessBar"
                                             :min 0
-                                            :max 101
+                                            :max "${maxBrightness}"
                                             :orientation "h"
                                             :round-digits 0
-                                            :value volumePercentage
+                                            :value brightnessPercentage
+                                            :onchange "brightnessctl set {}"
                                         )
                                         (label 
                                             :text "󰃠" 

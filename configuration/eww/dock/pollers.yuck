@@ -58,3 +58,18 @@
     :interval "7200s"
     'whoami'
 )
+
+(defpoll maxBrightness
+    :interval "7200s"
+    'brightnessctl max'
+)
+
+(defpoll volumePercentage
+    :interval "1s"
+    'pamixer --get-volume'
+)
+
+(defpoll brightnessPercentage
+    :interval "1s"
+    'brightnessctl get'
+)
