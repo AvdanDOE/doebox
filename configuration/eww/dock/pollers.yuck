@@ -27,11 +27,6 @@
     'date "+%Y"'
 )
 
-(defpoll pollerVolume 
-    :interval "60s"
-    'sh ./scripts/grabvolume.sh'
-)
-
 (defpoll pollerBluetooth
     :initial "󰂯" 
     :interval "3s"
@@ -42,11 +37,6 @@
     :initial "󰤨"
     :interval "3s"
     'sh ./scripts/grabwifi.sh'
-)
-
-(defpoll isMute
-    :interval "1s"
-    'pamixer --get-mute'
 )
 
 (defpoll pollerTheme 
@@ -60,16 +50,18 @@
 )
 
 (defpoll maxBrightness
+    :initial "101"
     :interval "7200s"
     'brightnessctl max'
 )
 
 (defpoll volumePercentage
-    :interval "1s"
+    :interval "3s"
     'pamixer --get-volume'
 )
 
 (defpoll brightnessPercentage
-    :interval "1s"
+    :initial "101"
+    :interval "7200s"
     'brightnessctl get'
 )
