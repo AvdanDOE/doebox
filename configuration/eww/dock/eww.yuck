@@ -127,13 +127,13 @@
                                 (statusRollupButton
                                     :margins "8 4 4 8"
                                     :tt "Wi-Fi"
-                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m wifi&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.2; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m wifi&&disown"
                                     :icon "${pollerWifi}"
                                 )
                                 (statusRollupButton
                                     :margins "8 8 4 4"
                                     :tt "Bluetooth"
-                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m bluetooth&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.2; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m bluetooth&&disown"
                                     :icon "${pollerBluetooth}"
                                 )
                         )
@@ -143,13 +143,13 @@
                                 (statusRollupButton
                                     :margins "4 4 4 8"
                                     :tt "Do not Disturb"
-                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m notifications&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.2; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m notifications&&disown"
                                     :icon "󰍷"
                                 )
                                 (statusRollupButton
                                     :margins "4 8 4 4"
                                     :tt "Change theme"
-                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.1; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m appearance&&disown"
+                                    :action "${EWW_CMD} update dockstatusRollupBool=false; sleep 0.2; ${EWW_CMD} close dockstatus_rollup; cutefish-settings -m appearance&&disown"
                                     :icon "󱎖"
                                 )
                         )
@@ -272,6 +272,7 @@
                     (button
                         :style "font-size: ${32*(scaleFactor/100)}"
                         :onclick "cutefish-terminal&&disown"
+                        :timeout "4s"
                         "󰆍"
                     )
             )
@@ -282,8 +283,9 @@
     (box
         :class "appboxGenericOpaque"
             (eventbox
-                :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; fi"
+                :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.2; ${EWW_CMD} close dockmain_rollup; fi"
                 :cursor "pointer"
+                :timeout "4s"
                     (image 
                         :style "font-size: ${32*(scaleFactor/100)}"
                         :path "../globalassets/avlogo.svg" 
@@ -300,6 +302,7 @@
                 :tooltip "${tt}"
                 :style "font-size: ${20*(scaleFactor/100)}"
                 :onclick "${action}"
+                :timeout "4s"
                 "${icon}"
             )
     )
@@ -315,6 +318,7 @@
                         :tooltip "${tt}"
                         :style "font-size: ${24*(scaleFactor/100)}"
                         :onclick "${action}"
+                        :timeout "4s"
                         "${icon}"
                     )
             )
@@ -349,15 +353,15 @@
 (defwidget mruSubPowermenu []
     (box
         (mruSubButton 
-            :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-settings&&disown" 
+            :action "${EWW_CMD} update dockmainRollupBool=false&& sleep 0.2&& ${EWW_CMD} close dockmain_rollup&& cutefish-settings&&disown" 
             :icon "󰒓"
         )
         (mruSubButton 
-            :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-shutdown&&disown" 
+            :action "${EWW_CMD} update dockmainRollupBool=false&& sleep 0.2&& ${EWW_CMD} close dockmain_rollup&& cutefish-shutdown&&disown" 
             :icon "󰐥"
         )
         (mruSubButton 
-            :action "${EWW_CMD} update dockmainRollupBool=false; sleep 0.1; ${EWW_CMD} close dockmain_rollup; cutefish-launcher&&disown" 
+            :action "${EWW_CMD} update dockmainRollupBool=false&& sleep 0.2&& ${EWW_CMD} close dockmain_rollup&& cutefish-launcher&&disown" 
             :icon "󰀻"
         )
     )
@@ -370,6 +374,7 @@
                 (button 
                     :style "font-size: ${24*(scaleFactor/100)}"
                     :onclick "${action}" 
+                    :timeout "4s"
                     "${icon}"
                 )
         )
