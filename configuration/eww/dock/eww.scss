@@ -38,28 +38,6 @@ $lacct: lighten($accent, 35%);
     color: $fgc;
 }
 
-.appIconGeneric {
-    font-size: 32px;
-}
-
-.iconSmallGeneric{
-    font-size: 20px;
-}
-
-.iconGeneric{
-    font-size: 24px;
-}
-
-.textNormalGeneric{
-    font-size: 18px;
-    font-weight: normal;
-}
-
-.textSubnormalGeneric{
-    font-size: 16px;
-    font-weight: normal;
-}
-
 .volumeBar, .diskBar, scale trough{
     all: unset;
     background-color: $sbg;
