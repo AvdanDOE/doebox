@@ -154,57 +154,40 @@
                                 )
                         )
                         (box
-                            ;:space-evenly false
-                                ;(button 
-                                    ;:onclick "pamixer --toggle-mute & ${EWW_CMD} update isMute=`pamixer --get-mute`"
-                                    ;:halign "end"
-                                    ;:style "margin: 0 0 0 8px; font-size: ${24*(scaleFactor/100)}"
-                                    ;{isMute ? "󰖁" : "󰕾"} 
-                                ;)
-                                ;(scale
-                                    ;:class "volumeBar"
-                                    ;:min 0
-                                    ;:max 101
-                                    ;:orientation "h"
-                                    ;:hexpand true
-                                    ;:onchange "pamixer --set-volume {}"
-                                    ;:round-digits 0
-                                    ;:value volumePercentage
-                                ;)
-                                :orientation "horizontal"
-                                :class "layoutboxGenericOpaque"
-                                    (overlay
-                                        (scale
-                                            :class "volumeBar"
-                                            :min 0
-                                            :max 101
-                                            :orientation "h"
-                                            :round-digits 0
-                                            :value volumePercentage
-                                            :onchange "pamixer --set-volume {}"
-                                        )
-                                        (label 
-                                            :text "󰕾" 
-                                            :style "font-size: ${24*(scaleFactor/100)}"
-                                            :class "buttonRollup"
-                                        )
+                            :orientation "horizontal"
+                            :class "layoutboxGenericOpaque"
+                                (overlay
+                                    (scale
+                                        :class "volumeBar"
+                                        :min 0
+                                        :max 101
+                                        :orientation "h"
+                                        :round-digits 0
+                                        :value volumePercentage
+                                        :onchange "pamixer --set-volume {}"
                                     )
-                                    (overlay
-                                        (scale
-                                            :class "brightnessBar"
-                                            :min 0
-                                            :max "${maxBrightness}"
-                                            :orientation "h"
-                                            :round-digits 0
-                                            :value brightnessPercentage
-                                            :onchange "brightnessctl set {}"
-                                        )
-                                        (label 
-                                            :text "󰃠" 
-                                            :style "font-size: ${24*(scaleFactor/100)}"
-                                            :class "buttonRollup"
-                                        )
+                                    (label 
+                                        :text "󰕾" 
+                                        :style "font-size: ${24*(scaleFactor/100)}"
+                                        :class "buttonRollup"
                                     )
+                                )
+                                (overlay
+                                    (scale
+                                        :class "brightnessBar"
+                                        :min 0
+                                        :max "${maxBrightness}"
+                                        :orientation "h"
+                                        :round-digits 0
+                                        :value brightnessPercentage
+                                        :onchange "brightnessctl set {}"
+                                    )
+                                    (label 
+                                        :text "󰃠" 
+                                        :style "font-size: ${24*(scaleFactor/100)}"
+                                        :class "buttonRollup"
+                                    )
+                                )
                         )
                 )
         )
