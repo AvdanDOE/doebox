@@ -239,7 +239,7 @@
                 :cursor "pointer"
                     (button 
                         :style "font-size: ${32*(scaleFactor/100)}"
-                        :onclick "xdotool keydown alt key Tab; sleep 2; xdotool keyup alt"
+                        :onclick "echo placeholder"
                         :timeout "4s"
                         "󱟲"
                     )
