@@ -1,7 +1,21 @@
+![Doebox Banner](https://github.com/AvdanDOE/readme_doeassets/blob/main/doebox_banner.png)
+
 # doebox
 
-Welcome to the development branch of doebox, the DE element of AvdanDOE.
+The desktop environment element for AvdanDOE.
 
-Named main to avoid conflicts and people submitting pull requests to the production branches, here you will find the most up-to-date, unstable and everchanging version of doebox as of right now.
+## Components
 
-Feel free to install and run it with latest tools like eww and plank, but keep in mind that everything here is prone to break, change, be added or removed, and whatnot, so we advice staying in the release branches if you want to test doebox out.
+Doebox is built upon various things, like customized versions of Cutefish DE (not included in this repository, but should be ran on top of) and elkowar's wacky widgets.
+
+## Separate installation
+
+You are beforehand heavily discouraged from running the doebox outside of AvdanDOE, but you can do so nevertheless, following the instructions.
+
+1. Make sure you have eww (elkowar's wacky widgets), material design icons font, harmonyos sans font and plank (bare minimum) on your system. It is encouraged you use a binary version of eww, that is added to path, otherwise you might have to spend some time configuring it to run its own commands outside of the code.
+2. Place respective configuratons into their folders (for info refer to the packages' manuals).
+3. Launch eww with `eww -c 'config path' open-many dockstatus dockmain dockstatic dockdynamic`
+
+## FDT ISO Testing
+
+You can try out the latest, freshest doebox, including some of its other components, by livebooting the FDT (Feature Drop Test) ISO of AvdanDOE, which you can find on the project's [Discord](https://dsc.gg/avdandoe).
