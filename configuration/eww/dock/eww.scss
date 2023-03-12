@@ -2,18 +2,17 @@
 // based on eww
 // for licensing and info refer to avdandoe/doebox
 
-$bgc: #000;
+$bgc: #1c1c1d;
+$sbg: #2c2c2d;
 $fgc: #fff;
-$accent: #4155CC;
+$accent: #4155cc;
 
-// unset gtk design, set font
 * { all: unset; font-family: HarmonyOS Sans; }
 
-// generic dock window design
 .boxGeneric {
     background-color: $bgc;
     border-radius: 8px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .boxGenericOpaque {
@@ -22,58 +21,46 @@ $accent: #4155CC;
 }
 
 .buttonBoxRollup{
-    background-color: $fgc;
+    background-color: $accent;
     border-radius: 8px;
-    color: $bgc;
+    color: $fgc;
 }
 
-.appIconGeneric {
-    font-size: 32px;
-}
-
-.iconSmallGeneric{
-    font-size: 20px;
-}
-
-.iconGeneric{
-    font-size: 24px;
-}
-
-.textNormalGeneric{
-    font-size: 18px;
-    font-weight: normal;
-}
-
-.textSubnormalGeneric{
-    font-size: 16px;
-    font-weight: normal;
+.buttonRollup{
+    color: $fgc;
 }
 
 .volumeBar, .diskBar, scale trough{
     all: unset;
-    background-color: #111;
+    background-color: $sbg;
     border-radius: 8px;
 }
 
 .volumeBar trough{
-    min-height: 20px;
-    min-width: 120px;
-    margin: 0 8px 0 8px;
+    min-height: 50px;
+    min-width: 130px;
+    margin: 4 4 8 8;
+}
+
+.brightnessBar trough{
+    min-height: 50px;
+    min-width: 130px;
+    margin: 4 8 8 4;
 }
 
 .diskBar trough{
     min-height: 8px;
     min-width: 20px;
-    margin: 0 70px 0 70px;
+    margin: 0 20px 0 20px;
 }
 
-.volumeBar, .diskBar, scale trough highlight{
+.volumeBar, .diskBar, .brightnessBar, scale trough highlight{
     all: unset;
     border-radius: 8px;
 }
 
 .volumeBar trough highlight{
-    background-color: #fff;
+    background-color: $accent;
 }
 
 .diskBar trough highlight{
@@ -82,11 +69,31 @@ $accent: #4155CC;
 
 .roundedProfileImage{
     border-radius: 8px;
-    background-image: url("../globalassets/profile.jpg");
+    background-image: url("../globalassets/profile.png");
     min-width: 45px;
     min-height: 45px;
     background-position: 100%;
     background-repeat: no-repeat;
     background-size: 45px 45px;
     margin: 10px 10px 10px 10px;
+}
+
+calendar.button{
+    color: $fgc;
+}
+
+calendar:selected{
+    color: $accent;
+}
+
+calendar.header{
+    color: $fgc;
+}
+
+calendar.highlight{
+    color: $fgc;
+}
+
+calendar:indeterminate{
+    color: $sbg;
 }

@@ -2,8 +2,6 @@
 ;; based on eww
 ;; for licensing and info refer to avdandoe/doebox
 
-;; list pollers
-
 (defpoll pollerTime 
     :interval "1s"
     'date +%H:%M '
@@ -14,9 +12,19 @@
     'date "+%A, %B %d"'
 )
 
-(defpoll pollerVolume 
-    :interval "60s"
-    'sh ./scripts/grabvolume.sh'
+(defpoll pollerDateMonth
+    :interval "1s"
+    'date "+%m"'
+)
+
+(defpoll pollerDateDay
+    :interval "1s"
+    'date "+%d"'
+)
+
+(defpoll pollerDateYear
+    :interval "1s"
+    'date "+%Y"'
 )
 
 (defpoll pollerBluetooth
@@ -31,11 +39,6 @@
     'sh ./scripts/grabwifi.sh'
 )
 
-(defpoll isMute
-    :interval "1s"
-    'pamixer --get-mute'
-)
-
 (defpoll pollerTheme 
     :interval "7200s"
     'sh ./scripts/settheme.sh'
@@ -45,4 +48,20 @@
     :interval "7200s"
     'whoami'
 )
-;; end pollers
+
+(defpoll maxBrightness
+    :initial "101"
+    :interval "7200s"
+    'brightnessctl max'
+)
+
+(defpoll volumePercentage
+    :interval "3s"
+    'pamixer --get-volume'
+)
+
+(defpoll brightnessPercentage
+    :initial "101"
+    :interval "7200s"
+    'brightnessctl get'
+)
