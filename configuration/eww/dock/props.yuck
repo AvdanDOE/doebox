@@ -1,1 +1,7 @@
 (defvar scaleFactor 100.000000)
+(defvar resolutionInPlace 1080)
+(defvar secondaryScaleFactor 1)
+
+;; scaleFactor directly connected to the screen scale that cutefish defines
+;; resolutionInPlace lets eww know what resolution we're running
+;; secondaryScaleFactor is introduced for elements like images and progressbars where scaling isnt quite as easy
