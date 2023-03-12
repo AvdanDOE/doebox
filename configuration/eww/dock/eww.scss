@@ -6,14 +6,6 @@ $bgc: #1c1c1d;
 $sbg: #2c2c2d;
 $fgc: #fff;
 $accent: #4155cc;
-$dacct: darken($accent, 40%);
-$lacct: lighten($accent, 35%);
-
-// bgc: main background
-// sbg: secondary background
-// fgc: foreground
-// accent: self explanatory
-// saccent: secondary accent
 
 * { all: unset; font-family: HarmonyOS Sans; }
 
