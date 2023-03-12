@@ -266,7 +266,7 @@
     (box
         :class "appboxGenericOpaque"
             (eventbox
-                :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false; sleep 0.2; ${EWW_CMD} close dockmain_rollup; fi"
+                :onclick "if [ `${EWW_CMD} get dockmainRollupBool` == 'false' ]; then ${EWW_CMD} open dockmain_rollup && ${EWW_CMD} update dockmainRollupBool=true; else ${EWW_CMD} update dockmainRollupBool=false&& sleep 0.2&& ${EWW_CMD} close dockmain_rollup; fi"
                 :cursor "pointer"
                 :timeout "4s"
                     (image 
