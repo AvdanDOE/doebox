@@ -205,11 +205,11 @@
                     (box
                         (label
                             :text "avdandoe_v1lune-dp2 󰍁"
-                            :style "font-size: ${16*(scaleFactor/100)}"
+                            :style "font-size: ${14*(scaleFactor/100)}"
                         )
                         (button
-                            :style "font-size: ${16*(scaleFactor/100)}"
-                            :onclick "echo a"
+                            :style "font-size: ${14*(scaleFactor/100)}"
+                            :onclick "echo call-settings"
                             "Application Settings 󱕷"
                         )
                     )
