@@ -3,26 +3,31 @@
 ;; for licensing and info refer to avdandoe/doebox
 
 (defpoll pollerTime 
+    :initial "00:00"
     :interval "1s"
     'date +%H:%M '
 )
 
 (defpoll pollerDate 
+    :initial "Monday, January 1"
     :interval "1s"
     'date "+%A, %B %d"'
 )
 
 (defpoll pollerDateMonth
+    :initial "01"
     :interval "1s"
     'date "+%m"'
 )
 
 (defpoll pollerDateDay
+    :initial "1"
     :interval "1s"
     'date "+%d"'
 )
 
 (defpoll pollerDateYear
+    :initial "2000"
     :interval "1s"
     'date "+%Y"'
 )
