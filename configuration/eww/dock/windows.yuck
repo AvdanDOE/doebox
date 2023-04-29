@@ -79,14 +79,3 @@
                 :anchor "bottom center")
     (dockstatic_rollup_layout)
 )
-
-(defwindow settings_debugger
-    :windowtype "normal"
-    :geometry (geometry
-                :x "0%"
-                :y "0%"
-                :width "0%"
-                :height "0%"
-                :anchor "center")
-    (settings_debugger_layout)
-)

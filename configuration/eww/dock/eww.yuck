@@ -207,11 +207,6 @@
                             :text "avdandoe_v1lune-dp2 󰍁"
                             :style "font-size: ${14*(scaleFactor/100)}"
                         )
-                        (button
-                            :style "font-size: ${14*(scaleFactor/100)}"
-                            :onclick "echo call-settings"
-                            "Application Settings 󱕷"
-                        )
                     )
                 )
         )
